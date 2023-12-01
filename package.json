@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "npx eleventy --serve",
+    "build": "npx eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@openlab/alembic": "^0.3.3",
+    "dotenv": "^16.3.1",
+    "prettier": "^3.1.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}

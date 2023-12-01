@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ site.title }}</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- @openlab/alembic inject-css -->
+    <link rel="stylesheet" href="https://fonts.openlab.dev/rubik/rubik.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    {{ content | safe }}
+    <footer>
+      {{ site.title }}
+    </footer>
+    <!-- @openlab/alembic inject-js -->
+  </body>
+</html>
