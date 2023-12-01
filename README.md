@@ -1,5 +1,6 @@
 ---
 layout: markdown.njk
+permalink: /index.html
 ---
 
 # 2023 Year in Rebrew
