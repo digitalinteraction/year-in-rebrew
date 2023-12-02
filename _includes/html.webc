@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title @text="site.title"></title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- @openlab/alembic inject-css -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.openlab.dev/rubik/rubik.css"
+      webc:keep
+    />
+    <link rel="stylesheet" href="/assets/style.css" webc:keep />
+    <style @raw="getBundle('css')" webc:keep></style>
+  </head>
+  <body>
+    <div @html="this.content" webc:nokeep></div>
+    <footer @text="site.title"></footer>
+    <!-- @openlab/alembic inject-js -->
+    <script type="module" @raw="getBundle('js')" webc:keep></script>
+  </body>
+</html>

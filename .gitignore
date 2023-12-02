@@ -7,3 +7,5 @@ node_modules
 _data/beancounter.json
 _site
 members.csv
+.cache
+.DS_Store

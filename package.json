@@ -4,8 +4,10 @@
     "start": "npx eleventy --serve",
     "build": "npx eleventy"
   },
-  "devDependencies": {
+  "dependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-fetch": "^4.0.0",
+    "@11ty/eleventy-plugin-webc": "^0.11.1",
     "@openlab/alembic": "^0.3.3",
     "dotenv": "^16.3.1",
     "prettier": "^3.1.0"

@@ -1,0 +1,12 @@
+<!-- Can't access props in webc:setup -->
+<!-- https://github.com/11ty/webc/issues/196 -->
+
+<script type="module" webc:setup>
+  const { StackLayout } = await import('@openlab/alembic')
+  // const attrs = { space: this.props.space }
+  // console.log(this)
+</script>
+
+<stack-layout :space="space">
+  <slot></slot>
+</stack-layout>
