@@ -1,11 +1,5 @@
 ---
 layout: html.webc
-pagination:
-  data: beancounter.users
-  size: 1
-  alias: member
-  resolve: values
-permalink: 'share/{{ member.username | hash }}/index.html'
 ---
 
 <main>
@@ -16,6 +10,16 @@ permalink: 'share/{{ member.username | hash }}/index.html'
       <section class="headshot">
         <img :src="headshots[member.username]" width="256" height="256" />
       </section>
+
+      <cups-graph @rawCups="json(member.cups)"></cups-graph>
+
+      <pre id="data"></pre>
     </stack-layout>
   </center-layout>
 </main>
+
+<script>
+  document.getElementById('data').innerHTML = await fetch('./member.json').then(
+    (r) => r.text(),
+  )
+</script>

@@ -5,17 +5,7 @@ const fs = require('node:fs')
 const eleventyWebc = require('@11ty/eleventy-plugin-webc')
 const { eleventyAlembic } = require('@openlab/alembic/11ty')
 
-const { HUB_API_TOKEN, URL_HASH_SECRET } = process.env
-
-// if (!HUB_API_TOKEN) {
-//   console.error('HUB_API_TOKEN not set')
-//   process.exit(1)
-// }
-
-if (!URL_HASH_SECRET) {
-  console.error('URL_HASH_SECRET not set')
-  process.exit(1)
-}
+const { URL_HASH_SECRET = 'top_secret' } = process.env
 
 const beancounter = require('./_data/beancounter.json')
 
@@ -40,4 +30,5 @@ module.exports = function (eleventyConfig) {
     }
     file.close()
   })
+  eleventyConfig.setServerOptions({ domDiff: false })
 }

@@ -1,5 +1,21 @@
-<p>Cup graph?</p>
+<section class="cupsGraph flow">
+  <p>Your cups</p>
+  <pre @raw="json(Object.keys($data))"></pre>
+  <pre @raw="json($data.site.title)"></pre>
+  <!-- <ul>
+    <li
+      webc:for="cup of $data.member.cups"
+      @text="`${cup.createdAt} — ${cup.resource} — ${cup.quantity}`"
+    ></li>
+  </ul> -->
+</section>
 
 <script>
   console.log('hello there')
 </script>
+
+<style>
+  .cupsGraph {
+    color: red;
+  }
+</style>
