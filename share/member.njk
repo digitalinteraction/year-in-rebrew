@@ -15,7 +15,10 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 <main>
   <center-layout>
     <stack-layout space="s5">
-      <h1 class="pageTitle">{{ site.title }}</h1>
+      <header class="pageHeader">
+        <h1>{{ site.title }}</h1>
+        <p>It's <em>bean</em> a year to remember!</p>
+      </header>
 
       <center-layout intrinsic>
         <cups-graph

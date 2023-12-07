@@ -10,9 +10,14 @@
   }
 }
 
-.pageTitle {
-  font-size: 4vw;
+.pageHeader {
   text-align: center;
+}
+.pageHeader h1 {
+  font-size: 4vw;
+}
+.pageHeader p {
+  font-size: 1.5vw;
 }
 
 cups-graph img {
