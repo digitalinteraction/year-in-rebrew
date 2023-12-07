@@ -14,7 +14,7 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 
 <main>
   <center-layout>
-    <stack-layout space="s5">
+    <stack-layout space="s4">
       <header class="pageHeader">
         <h1>{{ site.title }}</h1>
         <p>It's <em>bean</em> a year to remember!</p>
@@ -27,7 +27,25 @@ permalink: 'share/{{ member.username | hash }}/index.html'
           bags="{{ totalBags }}"
         ></cups-graph>
       </center-layout>
-
+      
+      <section class="textStats flow">
+        <p>
+          You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee.
+          <!-- that's ... -->
+        </p>
+        <p>
+          You bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
+          <!-- that's ... -->
+        </p>
+        {% if totalBeans > 0 %}
+        <p>
+          On average each cup of coffee cost you 
+          <span class="coolStat">{{ (totalBeans / 1000 * config.pricePerKilogram / totalCups) | formatCost }}</span>
+          
+          <!-- that's ... -->
+        </p>
+        {% endif %}
+      </section>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>

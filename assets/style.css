@@ -20,7 +20,34 @@
   font-size: 1.5vw;
 }
 
-cups-graph img {
-  border-radius: 50%;
-  border: var(--s-3) solid var(--color);
+.textStats {
+  animation-name: fade-in;
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+  animation-delay: 5000ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.coolStat {
+  /* background: var(--cool-background);
+  background-clip: text;
+  color: transparent; */
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+
+.textStats {
+  font-size: 1.3em;
 }

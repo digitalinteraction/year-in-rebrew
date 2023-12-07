@@ -13,6 +13,30 @@ function hash(value) {
   return createHmac('sha256', URL_HASH_SECRET).update(value).digest('base64url')
 }
 
+const cupsFormat = new Intl.NumberFormat('en-GB', {
+  notation: 'compact',
+})
+const beansFormat = new Intl.NumberFormat('en-GB', {
+  maximumSignificantDigits: 3,
+  style: 'unit',
+  unit: 'kilogram',
+})
+const costFormat = new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+})
+
+function formatCups(cups) {
+  return cupsFormat.format(cups) + (cups === 1 ? ' cup' : ' cups')
+}
+function formatBeans(grams) {
+  return beansFormat.format(grams / 1000)
+}
+function formatCost(pounds) {
+  console.log(pounds)
+  return costFormat.format(pounds)
+}
+
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
   eleventyConfig.setQuietMode(true)
@@ -27,6 +51,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('sumRecords', (v) =>
     v.reduce((sum, record) => sum + record.quantity, 0),
   )
+  eleventyConfig.addFilter('formatCups', (v) => formatCups(v))
+  eleventyConfig.addFilter('formatBeans', (v) => formatBeans(v))
+  eleventyConfig.addFilter('formatCost', (v) => formatCost(v))
 
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')
