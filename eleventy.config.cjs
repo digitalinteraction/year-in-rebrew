@@ -13,6 +13,7 @@ function hash(value) {
   return createHmac('sha256', URL_HASH_SECRET).update(value).digest('base64url')
 }
 
+/** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
   eleventyConfig.setQuietMode(true)
 
@@ -20,8 +21,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyAlembic, { useLabcoat: true })
 
   eleventyConfig.addPassthroughCopy('assets')
+
   eleventyConfig.addFilter('json', (value) => JSON.stringify(value, null, 2))
   eleventyConfig.addFilter('hash', (value) => hash(value))
+  eleventyConfig.addFilter('sumRecords', (v) =>
+    v.reduce((sum, record) => sum + record.quantity, 0),
+  )
+
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')
     file.write('username,hash\n')

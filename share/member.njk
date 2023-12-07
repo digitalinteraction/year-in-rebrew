@@ -1,0 +1,36 @@
+---
+layout: html.njk
+pagination:
+  data: beancounter.users
+  size: 1
+  alias: member
+  resolve: values
+permalink: 'share/{{ member.username | hash }}/index.html'
+---
+
+{% set totalCups = member.cups | sumRecords %}
+{% set totalBeans = member.beans | sumRecords %}
+{% set totalBags = member.beans.length %}
+
+<main>
+  <center-layout>
+    <stack-layout space="s5">
+      <h1 class="pageTitle">{{ site.title }}</h1>
+
+      <center-layout intrinsic>
+        <cups-graph
+          image="{{ headshots[member.username] }}"
+          cups="{{ totalCups }}"
+          bags="{{ totalBags }}"
+        ></cups-graph>
+      </center-layout>
+
+
+      <pre id="data" aria-hidden="true"></pre>
+    </stack-layout>
+  </center-layout>
+</main>
+
+{% include 'footer.njk' %}
+
+<script type="module" src="/assets/member.mjs"></script>

@@ -15,5 +15,7 @@
   text-align: center;
 }
 
-.headshot {
+cups-graph img {
+  border-radius: 50%;
+  border: var(--s-3) solid var(--color);
 }

@@ -10,13 +10,10 @@
       href="https://fonts.openlab.dev/rubik/rubik.css"
       webc:keep
     />
-    <link rel="stylesheet" href="/assets/style.css" webc:keep />
-    <style @raw="getBundle('css')" webc:keep></style>
+    <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
-    <div @html="this.content" webc:nokeep></div>
-    <footer @text="site.title"></footer>
+    {{ content | safe }}
     <!-- @openlab/alembic inject-js -->
-    <script type="module" @raw="getBundle('js')" webc:keep></script>
   </body>
 </html>
