@@ -33,13 +33,14 @@ function formatBeans(grams) {
   return beansFormat.format(grams / 1000)
 }
 function formatCost(pounds) {
-  console.log(pounds)
   return costFormat.format(pounds)
 }
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
   eleventyConfig.setQuietMode(true)
+
+  eleventyConfig.addWatchTarget('source')
 
   eleventyConfig.addPlugin(eleventyWebc)
   eleventyConfig.addPlugin(eleventyAlembic, { useLabcoat: true })

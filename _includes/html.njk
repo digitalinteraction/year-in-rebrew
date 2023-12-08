@@ -10,10 +10,14 @@
       href="https://fonts.openlab.dev/rubik/rubik.css"
       webc:keep
     />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     {{ content | safe }}
     <!-- @openlab/alembic inject-js -->
+    <script>
+      const { searchParams } = new URL(location.href)
+      if (searchParams.has('dev')) document.body.classList.add('dev')
+    </script>
   </body>
 </html>

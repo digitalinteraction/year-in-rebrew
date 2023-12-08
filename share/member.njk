@@ -11,6 +11,7 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 {% set totalCups = member.cups | sumRecords %}
 {% set totalBeans = member.beans | sumRecords %}
 {% set totalBags = member.beans.length %}
+{% set costPerCup = totalBeans / 1000 * config.pricePerKilogram / totalCups %}
 
 <main>
   <center-layout>
@@ -21,28 +22,27 @@ permalink: 'share/{{ member.username | hash }}/index.html'
       </header>
 
       <center-layout intrinsic>
-        <cups-graph
+        <usage-planet
           image="{{ headshots[member.username] }}"
           cups="{{ totalCups }}"
           bags="{{ totalBags }}"
-        ></cups-graph>
+        ></usage-planet>
       </center-layout>
       
       <section class="textStats flow">
         <p>
           You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee.
-          <!-- that's ... -->
+          <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>
         </p>
         <p>
           You bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
-          <!-- that's ... -->
+          <fun-metric type="weight" value="{{ totalBeans / 1000 }}"></fun-metric>
         </p>
         {% if totalBeans > 0 %}
         <p>
           On average each cup of coffee cost you 
-          <span class="coolStat">{{ (totalBeans / 1000 * config.pricePerKilogram / totalCups) | formatCost }}</span>
-          
-          <!-- that's ... -->
+          <span class="coolStat">{{ costPerCup | formatCost }}</span>
+          <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>
         </p>
         {% endif %}
       </section>
@@ -54,4 +54,4 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 
 {% include 'footer.njk' %}
 
-<script type="module" src="/assets/member.mjs"></script>
+<script type="module" src="/js/member.js"></script>

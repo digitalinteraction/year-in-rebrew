@@ -1,9 +1,11 @@
-import { CupsGraph } from './js/cups-graph.mjs'
+import { UsagePlanet } from './elements/usage-planet.mjs'
+import { FunMetric } from './elements/fun-metric.mjs'
 
 const pageUrl = new URL(location.href)
 
 async function main() {
-  CupsGraph.define()
+  UsagePlanet.define()
+  FunMetric.define()
 
   const { username, beans, cups } = await fetch('./member.json').then((r) =>
     r.json(),

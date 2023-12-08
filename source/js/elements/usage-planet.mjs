@@ -1,4 +1,4 @@
-import { Application, Sprite, Texture, Graphics } from './pixi.mjs'
+import { Application, Sprite, Texture, Graphics } from 'pixi.js'
 
 const WIDTH = 640
 const HEIGHT = 300
@@ -37,7 +37,7 @@ function pause(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export class CupsGraph extends HTMLElement {
+export class UsagePlanet extends HTMLElement {
   app = new Application({
     width: WIDTH,
     height: HEIGHT,
@@ -54,7 +54,7 @@ export class CupsGraph extends HTMLElement {
   }
 
   static define() {
-    window.customElements.define('cups-graph', this)
+    customElements.define('usage-planet', this)
   }
 
   connectedCallback() {
@@ -85,6 +85,7 @@ export class CupsGraph extends HTMLElement {
     image.zIndex = 0
     image.mask = this.imageMask
     this.app.stage.addChild(image)
+    this.image = image
 
     this.appendChild(this.app.view)
 
@@ -135,5 +136,7 @@ export class CupsGraph extends HTMLElement {
   tick(dt) {
     let now = Date.now()
     for (const o of this.orbitals) o.update(now)
+
+    this.image.rotation = Math.sin(now * 0.002) * 0.1
   }
 }
