@@ -28,6 +28,12 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Eleventy cache
+        uses: actions/cache@v3
+        with:
+          path: .cache
+          key: ${{ runner.os }}-eleventy
+
       - run: curl -sfL $BEANCOUNTER_DATA_URL > _data/beancounter.json
         env:
           BEANCOUNTER_DATA_URL: ${{ secrets.BEANCOUNTER_DATA_URL }}
@@ -40,7 +46,7 @@ jobs:
           NODE_ENV: production
           URL_HASH_SECRET: ${{ secrets.URL_HASH_SECRET }}
 
-      - run: echo members.csv
+      - run: cat members.csv
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
