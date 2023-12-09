@@ -54,6 +54,42 @@ permalink: 'share/{{ member.username | hash }}/index.html'
         </p>
         {% endif %}
       </section>
+      
+      <section class="flow">
+        <h2>Daily coffees</h2>
+        <switcher-layout limit="5">
+          <div class="dayCard">
+            <header>MON</header>
+            <span class="coolStat">
+              {{ member.cups | dailyAverage(1) | formatCups }}
+            </span>
+          </div>
+          <div class="dayCard">
+            <header>TUE</header>
+            <span class="coolStat">
+              {{ member.cups | dailyAverage(2) | formatCups }}
+            </span>
+          </div>
+          <div class="dayCard">
+            <header>WED</header>
+            <span class="coolStat">
+              {{ member.cups | dailyAverage(3) | formatCups }}
+            </span>
+          </div>
+          <div class="dayCard">
+            <header>THU</header>
+            <span class="coolStat">
+              {{ member.cups | dailyAverage(4) | formatCups }}
+            </span>
+          </div>
+          <div class="dayCard">
+            <header>FRI</header>
+            <span class="coolStat">
+              {{ member.cups | dailyAverage(5) | formatCups }}
+            </span>
+          </div>
+        </switcher-layout>
+      </section>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>

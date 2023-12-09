@@ -26,6 +26,8 @@ const costFormat = new Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 })
 
+const daysIn2023 = [, 52, 52, 52, 52, 52]
+
 function formatCups(cups) {
   return cupsFormat.format(cups) + (cups === 1 ? ' cup' : ' cups')
 }
@@ -34,6 +36,12 @@ function formatBeans(grams) {
 }
 function formatCost(pounds) {
   return costFormat.format(pounds)
+}
+function dailyAverage(records, dayOfWeek) {
+  const sum = records
+    .filter((r) => new Date(r.createdAt).getDay() === dayOfWeek)
+    .reduce((sum, r) => sum + r.quantity, 0)
+  return sum / daysIn2023[dayOfWeek]
 }
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
@@ -55,6 +63,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('formatCups', (v) => formatCups(v))
   eleventyConfig.addFilter('formatBeans', (v) => formatBeans(v))
   eleventyConfig.addFilter('formatCost', (v) => formatCost(v))
+  eleventyConfig.addFilter('dailyAverage', (v, d) => dailyAverage(v, d))
 
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')
