@@ -28,7 +28,7 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: echo "$BEANCOUNTER_DATA" | base64 -d > _data/beancounter.json
+      - run: echo $BEANCOUNTER_DATA | base64 -d > _data/beancounter.json
         env:
           BEANCOUNTER_DATA: ${{ vars.BEANCOUNTER_DATA }}
 
