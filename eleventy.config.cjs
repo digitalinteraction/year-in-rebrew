@@ -30,7 +30,7 @@ function formatCups(cups) {
   return cupsFormat.format(cups) + (cups === 1 ? ' cup' : ' cups')
 }
 function formatBeans(grams) {
-  return beansFormat.format(grams / 1000)
+  return beansFormat.format(grams)
 }
 function formatCost(pounds) {
   return costFormat.format(pounds)

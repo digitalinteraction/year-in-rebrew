@@ -34,11 +34,6 @@ export class FunMetric extends HTMLElement {
       return
     }
 
-    const funValue = calculator(value)
-    if (funValue) {
-      this.textContent = `That's ${funValue}.`
-    } else {
-      console.log(type, value)
-    }
+    this.textContent = calculator(value)
   }
 }

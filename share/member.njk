@@ -9,9 +9,9 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 ---
 
 {% set totalCups = member.cups | sumRecords %}
-{% set totalBeans = member.beans | sumRecords %}
+{% set totalBeans = (member.beans | sumRecords) / 1000 %}
 {% set totalBags = member.beans.length %}
-{% set costPerCup = totalBeans / 1000 * config.pricePerKilogram / totalCups %}
+{% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
 
 <main>
   <center-layout>
@@ -31,18 +31,19 @@ permalink: 'share/{{ member.username | hash }}/index.html'
       
       <section class="textStats flow">
         <p>
-          You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee.
-          <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>
+          You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee,
+          that's about <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>.
         </p>
         <p>
           You bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
-          <fun-metric type="weight" value="{{ totalBeans / 1000 }}"></fun-metric>
+          That's about <fun-metric type="weight" value="{{ totalBeans }}"></fun-metric>
+          or <fun-metric type="length" value="{{ totalBeans * config.beansPerKilogram * config.beanLength }}"></fun-metric> if you lined up all the beans.
         </p>
         {% if totalBeans > 0 %}
         <p>
           On average each cup of coffee cost you 
-          <span class="coolStat">{{ costPerCup | formatCost }}</span>
-          <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>
+          <span class="coolStat">{{ costPerCup | formatCost }}</span>.
+          That's <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>!
         </p>
         {% endif %}
       </section>

@@ -62,11 +62,7 @@ export class UsagePlanet extends HTMLElement {
     const cups = parseInt(this.getAttribute('cups')) || 0
     const bags = parseInt(this.getAttribute('bags')) || 0
 
-    console.debug('cups-graph', { imageSrc, cups, bags })
-
     this.app.stage.sortableChildren = true
-
-    // TODO: work out how to make the headshot a circle
 
     const color = getComputedStyle(document.body).getPropertyValue('--color')
     this.colourMask.beginFill(color)
