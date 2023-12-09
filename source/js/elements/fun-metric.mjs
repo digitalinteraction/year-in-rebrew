@@ -6,7 +6,7 @@ import {
 } from '../lib/metrics.mjs'
 
 // NOTE: I'd much rather this be baked into the 11ty build
-//       but it doesn't support ESM at time of writting
+//       but it doesn't support ESM at time of writing
 export class FunMetric extends HTMLElement {
   static define() {
     customElements.define('fun-metric', this)

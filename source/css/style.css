@@ -65,3 +65,12 @@
 canvas {
   max-width: 100%;
 }
+
+member-cups-graph,
+member-beans-graph {
+  display: block;
+  color: var(--color);
+  background-color: var(--highlight);
+  padding: var(--s-1);
+  border-radius: var(--s0);
+}

@@ -2,20 +2,7 @@ const scaleFormatter = new Intl.NumberFormat('en-GB', {
   maximumFractionDigits: 0,
 })
 
-console.log(scaleFormatter.format(1))
-console.log(scaleFormatter.format(1000))
-console.log(scaleFormatter.format(1.5))
-console.log(scaleFormatter.format(999.9))
-
 const niceScales = [
-  // { name: 'two', value: 2 },
-  // { name: 'five', value: 5 },
-  // { name: 'ten', value: 10 },
-  // { name: 'twenty five', value: 25 },
-  // { name: 'fifty', value: 50 },
-  // { name: 'seventy five', value: 75 },
-  // { name: 'one hundred', value: 100 },
-
   { name: 'one', value: 1 },
   { name: '1/2', value: 0.5 },
   { name: '1/3', value: 1 / 3 },
@@ -56,13 +43,11 @@ const funVolumes = {
 /** @param {number} input */
 export function getFunVolume(input) {
   const { metric, scale } = getFunMetric(input, funVolumes)
-  console.log('getFunVolume', input, metric, scale)
 
   if (scale.value === 1) {
     return `a ${metric.name}`
   }
   if (scale.value > 1) {
-    console.log('...')
     return `${scaleFormatter.format(scale.value)} ${plural(metric.name)} full`
   }
   return `${scale.name} of a ${metric.name} full`
@@ -127,7 +112,6 @@ const funCosts = {
 
 /** @param {number} input */
 export function getFunCost(input) {
-  console.log(input)
   const starbucks = (funCosts.starbucks / input).toFixed(0)
   const costa = (funCosts.costa / input).toFixed(0)
   const downstairs = (funCosts.downstairs / input).toFixed(0)

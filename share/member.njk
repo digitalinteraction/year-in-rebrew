@@ -90,6 +90,16 @@ permalink: 'share/{{ member.username | hash }}/index.html'
           </div>
         </switcher-layout>
       </section>
+      
+      <section class="flow">
+        <h2>Your coffees this year</h2>
+        <member-cups-graph></member-cups-graph>
+      </section>
+      
+      <section class="flow">
+        <h2>Your purchases</h2>
+        <member-beans-graph></member-beans-graph>
+      </section>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>
