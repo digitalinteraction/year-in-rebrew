@@ -1,13 +1,20 @@
-const numberFormatter = new Intl.NumberFormat('en-GB', {})
+const scaleFormatter = new Intl.NumberFormat('en-GB', {
+  maximumFractionDigits: 0,
+})
+
+console.log(scaleFormatter.format(1))
+console.log(scaleFormatter.format(1000))
+console.log(scaleFormatter.format(1.5))
+console.log(scaleFormatter.format(999.9))
 
 const niceScales = [
-  { name: 'two', value: 2 },
-  { name: 'five', value: 5 },
-  { name: 'ten', value: 10 },
-  { name: 'twenty five', value: 25 },
-  { name: 'fifty', value: 50 },
-  { name: 'seventy five', value: 75 },
-  { name: 'one hundred', value: 100 },
+  // { name: 'two', value: 2 },
+  // { name: 'five', value: 5 },
+  // { name: 'ten', value: 10 },
+  // { name: 'twenty five', value: 25 },
+  // { name: 'fifty', value: 50 },
+  // { name: 'seventy five', value: 75 },
+  // { name: 'one hundred', value: 100 },
 
   { name: 'one', value: 1 },
   { name: '1/2', value: 0.5 },
@@ -49,12 +56,14 @@ const funVolumes = {
 /** @param {number} input */
 export function getFunVolume(input) {
   const { metric, scale } = getFunMetric(input, funVolumes)
+  console.log('getFunVolume', input, metric, scale)
 
   if (scale.value === 1) {
     return `a ${metric.name}`
   }
   if (scale.value > 1) {
-    return `${numberFormatter.format(scale.name)} ${plural(metric.name)} full`
+    console.log('...')
+    return `${scaleFormatter.format(scale.value)} ${plural(metric.name)} full`
   }
   return `${scale.name} of a ${metric.name} full`
 }
@@ -101,9 +110,9 @@ export function getFunLength(input) {
     return `the length of a ${metric.name}`
   }
   if (scale.value > 1) {
-    return `${numberFormatter.format(scale.name)} ${plural(metric.name)}`
+    return `${scaleFormatter.format(scale.value)} ${plural(metric.name)}`
   }
-  return `${scale.name} the length of a ${metric.name}`
+  return `${scale.name}⨉ the length of a ${metric.name}`
 }
 
 //
@@ -131,8 +140,9 @@ export function getFunCost(input) {
  * @param {Record<string,number>} metric
  */
 export function getFunMetric(input, targetMetric) {
+  const metrics = sortMetrics(targetMetric)
   for (const scale of niceScales) {
-    for (const metric of sortMetrics(targetMetric)) {
+    for (const metric of metrics) {
       if (almostEqual(input, metric.value * scale.value)) {
         console.debug(
           'getFunMetric %s=%f value=%f',
@@ -145,9 +155,12 @@ export function getFunMetric(input, targetMetric) {
     }
   }
 
-  const [metric] = sortMetrics(targetMetric).reverse()
+  const [metric] = metrics
+    .map((m) => ({ ...m, distance: Math.abs(m.value - input) }))
+    .sort((a, b) => a.distance - b.distance)
+
   const scale = {
-    name: (input / metric.value).toFixed(),
+    name: (input / metric.value).toFixed(0),
     value: input / metric.value,
   }
   return { metric, scale }
