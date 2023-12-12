@@ -67,7 +67,8 @@ canvas {
 }
 
 cups-graph,
-beans-graph {
+beans-graph,
+hourly-radar {
   display: block;
   color: var(--color);
   background-color: var(--highlight);

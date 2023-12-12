@@ -8,6 +8,8 @@ pagination:
 permalink: 'share/{{ member.username | hash }}/index.html'
 
 sectionHeight: 50vh
+downstairsCost: 2.1
+costaCost: 3.2
 ---
 
 {% set totalCups = member.cups | sumRecords %}
@@ -54,7 +56,8 @@ sectionHeight: 50vh
           <p>
             On average each cup of coffee cost you 
             <span class="coolStat">{{ costPerCup | formatCost }}</span>.
-            That's <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>!
+
+            That's <span class="coolStat">{{ (downstairsCost / costPerCup).toFixed(0) }}⨉</span> cheaper than downstairs. Through the year, the same coffees would have cost you <span class="coolStat">£{{ (totalCups * costaCost).toFixed(2) }}</span> at Costa!
           </p>
           {% endif %}
         </section>
@@ -62,7 +65,7 @@ sectionHeight: 50vh
       
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
-          <h2>Daily coffees</h2>
+          <h2>Coffees habbits</h2>
           <switcher-layout limit="5">
             <div class="dayCard">
               <header>MON</header>
@@ -95,22 +98,27 @@ sectionHeight: 50vh
               </span>
             </div>
           </switcher-layout>
+          <hourly-radar endpoint="./hourly-cups.json"></hourly-radar>
         </section>
       </cover-layout>
       
+      {% if totalCups > 0 %}
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <h2>Your coffees this year</h2>
           <cups-graph endpoint="./monthly-cups.json"></cups-graph>
         </section>
       </cover-layout>
+      {% endif %}
       
+      {% if totalBeans > 0 %}
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <h2>Your purchases</h2>
           <beans-graph endpoint="./monthly-beans.json"></beans-graph>
         </section>
       </cover-layout>
+      {% endif %}
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>

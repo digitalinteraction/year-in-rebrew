@@ -61,7 +61,6 @@ const funWeights = {
   'can of pop': 0.343,
   corgi: 12.24699,
   dalmatian: 31.75147,
-  "Terry's chocolate orange": 0.157,
 }
 
 /** @param {number} input */
@@ -82,9 +81,10 @@ export function getFunWeight(input) {
 //
 
 const funLengths = {
+  human: 1.7,
+  cow: 2.45,
   pencil: 0.19,
-  'can of pop': 0.11498,
-  'lego brick': 0.0191,
+  'blue whale': 29.9,
 }
 
 /** @param {number} input */
@@ -95,9 +95,11 @@ export function getFunLength(input) {
     return `the length of a ${metric.name}`
   }
   if (scale.value > 1) {
-    return `${scaleFormatter.format(scale.value)} ${plural(metric.name)}`
+    return `the length of ${scaleFormatter.format(scale.value)} ${plural(
+      metric.name,
+    )}`
   }
-  return `${scale.name}⨉ the length of a ${metric.name}`
+  return `${scale.name} the length of a ${metric.name}`
 }
 
 //
@@ -106,17 +108,17 @@ export function getFunLength(input) {
 
 const funCosts = {
   starbucks: 3.85,
-  costa: 3.7,
-  downstairs: 4, // TODO: find actual value
+  costa: 3.2,
+  downstairs: 2.1,
 }
 
 /** @param {number} input */
 export function getFunCost(input) {
-  const starbucks = (funCosts.starbucks / input).toFixed(0)
+  // const starbucks = (funCosts.starbucks / input).toFixed(0)
   const costa = (funCosts.costa / input).toFixed(0)
   const downstairs = (funCosts.downstairs / input).toFixed(0)
 
-  return `${starbucks}⨉ cheaper than starbucks, ${costa}⨉ than costa and ${downstairs}⨉ than downstairs`
+  return `${downstairs}⨉ cheaper than downstairs, through the year it would have cost you £${costa} at Costa`
 }
 
 /**

@@ -1,4 +1,4 @@
-module.exports = class MonthlyCupsTemplate {
+module.exports = class MonthlyBeansTemplate {
   data() {
     return {
       pagination: {
