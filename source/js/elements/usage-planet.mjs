@@ -7,6 +7,15 @@ const startOfYear = new Date('2023-01-01')
 const endOfYear = new Date('2024-01-01')
 const msPerDay = 24 * 60 * 60 * 1_000
 
+const CUPS_DURATION = 6_000
+const BEANS_DURATION = 2_000
+
+const CUP_RADIUS = 180
+const BEAN_RADIUS = 280
+
+const CUP_SPREAD = 120
+const BEAN_SPREAD = 50
+
 /**
  * @typedef {object} Resource
  * @property {string} createdAt
@@ -46,6 +55,20 @@ export function random(min, max) {
 
 function pause(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+/**
+ * @param {Date} input
+ * @param {Date} startOfYear
+ * @param {Date} endOfYear
+ */
+function percentThroughYear(input, startOfYear, endOfYear) {
+  const ms = input.getTime() - startOfYear.getTime()
+  return ms / (endOfYear.getTime() - startOfYear.getTime())
+}
+
+function spread(input, value) {
+  return input * value * 2 - value
 }
 
 export class UsagePlanet extends HTMLElement {
@@ -108,9 +131,6 @@ export class UsagePlanet extends HTMLElement {
 
     this.appendChild(this.app.view)
 
-    // for (let i = 0; i < cups; i++) this.addCup()
-    // for (let i = 0; i < bags; i++) this.addBean()
-
     this.app.ticker.add((dt) => this.tick(dt))
 
     this.addOrbits(cups, beans)
@@ -128,7 +148,7 @@ export class UsagePlanet extends HTMLElement {
         endOfYear,
       )
       this.addBean(t)
-      await pause(1000 / (beans.length || 1))
+      await pause(BEANS_DURATION / (beans.length || 1))
     }
 
     await pause(1000)
@@ -137,7 +157,7 @@ export class UsagePlanet extends HTMLElement {
       const t = percentThroughYear(date, startOfYear, endOfYear)
       const u = (date.getTime() % msPerDay) / msPerDay
       this.addCup(t, u)
-      await pause(3000 / (cups.length || 1))
+      await pause(CUPS_DURATION / (cups.length || 1))
     }
   }
 
@@ -149,7 +169,13 @@ export class UsagePlanet extends HTMLElement {
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)
     this.orbitals.push(
-      new Orbital(sprite, random(-40, 40), temp * 200 - 100, t, 180),
+      new Orbital(
+        sprite,
+        random(-40, 40),
+        spread(temp, CUP_SPREAD),
+        t,
+        CUP_RADIUS,
+      ),
     )
   }
   addBean(t) {
@@ -159,9 +185,7 @@ export class UsagePlanet extends HTMLElement {
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)
-    this.orbitals.push(
-      new Orbital(sprite, random(-20, 20), random(-20, 20), t, 280),
-    )
+    this.orbitals.push(new Orbital(sprite, 0, 0, t, BEAN_RADIUS))
   }
 
   /** @param {number} dt */
@@ -171,14 +195,4 @@ export class UsagePlanet extends HTMLElement {
 
     this.image.rotation = Math.sin(now * 0.002) * 0.1
   }
-}
-
-/**
- * @param {Date} input
- * @param {Date} startOfYear
- * @param {Date} endOfYear
- */
-function percentThroughYear(input, startOfYear, endOfYear) {
-  const ms = input.getTime() - startOfYear.getTime()
-  return ms / (endOfYear.getTime() - startOfYear.getTime())
 }
