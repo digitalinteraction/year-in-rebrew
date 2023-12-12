@@ -97,7 +97,6 @@ export class UsagePlanet extends HTMLElement {
 
     watchColorScheme((scheme) => {
       this.colorScheme = scheme
-      console.log(this.colorScheme)
     })
 
     await this.loadTextures()
@@ -183,8 +182,8 @@ export class UsagePlanet extends HTMLElement {
 
   addCup(t, y = random(0, 1)) {
     const sprite = new Sprite(this.textures[this.colorScheme].cup)
-    sprite.width = 17
-    sprite.height = 12
+    sprite.width = 20
+    sprite.height = 14.4
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)

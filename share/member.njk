@@ -119,6 +119,21 @@ costaCost: 3.2
         </section>
       </cover-layout>
       {% endif %}
+      
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <p>
+            Your coffee comrade is ... <span class="coolStat">{{ peers.goodies[0].username }}</span>,
+            you shared <span class="coolStat">{{ peers.goodies[0].value }}</span> coffees together!
+          </p>
+          <p>
+            Your coffee nemesis is ... <span class="coolStat">{{ peers.baddies[0].username }}</span>,
+            you missed sharing a coffee with them on <span class="coolStat">{{ peers.baddies[0].value }}</span> days!
+          </p>
+          
+          <pre>{{ peers | json }}</pre>
+        </section>
+      </cover-layout>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>
