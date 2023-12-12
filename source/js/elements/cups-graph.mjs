@@ -1,4 +1,5 @@
 import { Chart, shortMonths } from '../lib/chart.mjs'
+import { watchColorScheme } from '../lib/dark-mode.mjs'
 
 export class CupsGraph extends HTMLElement {
   static define() {
@@ -8,7 +9,22 @@ export class CupsGraph extends HTMLElement {
     this.canvas = document.createElement('canvas')
     this.appendChild(this.canvas)
 
-    this.render()
+    watchColorScheme(() => this.render())
+  }
+
+  getChartOptions() {
+    const color = getComputedStyle(document.body).getPropertyValue('--color')
+
+    return {
+      color: color,
+      borderColor: color,
+      tension: 0.4,
+      pointStyle: false,
+      borderWidth: 5,
+      plugins: {
+        legend: false,
+      },
+    }
   }
 
   async render() {
@@ -21,33 +37,23 @@ export class CupsGraph extends HTMLElement {
       return
     }
 
-    const color = getComputedStyle(document.body).getPropertyValue('--color')
-    const highlight = getComputedStyle(document.body).getPropertyValue(
-      '--highlight',
-    )
-
-    this.chart = new Chart(this.canvas, {
-      type: 'line',
-      data: {
-        labels: shortMonths,
-        datasets: [
-          {
-            label: 'Cups of coffee',
-            data: monthly,
-          },
-        ],
-      },
-      options: {
-        color: color,
-        borderColor: color,
-        backgroundColor: highlight,
-        tension: 0.4,
-        pointStyle: false,
-        borderWidth: 5,
-        plugins: {
-          legend: false,
+    if (this.chart) {
+      this.chart.options = this.getChartOptions()
+      this.chart.update()
+    } else {
+      this.chart = new Chart(this.canvas, {
+        type: 'line',
+        data: {
+          labels: shortMonths,
+          datasets: [
+            {
+              label: 'Cups of coffee',
+              data: monthly,
+            },
+          ],
         },
-      },
-    })
+        options: this.getChartOptions(),
+      })
+    }
   }
 }

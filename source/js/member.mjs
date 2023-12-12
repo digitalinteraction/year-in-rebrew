@@ -2,7 +2,7 @@ import { UsagePlanet } from './elements/usage-planet.mjs'
 import { FunMetric } from './elements/fun-metric.mjs'
 import { CupsGraph } from './elements/cups-graph.mjs'
 import { BeansGraph } from './elements/beans-graph.mjs'
-import { HourlyRadar } from './elements/hourly-radar.mjs'
+import { HourlyGraph } from './elements/hourly-graph.mjs'
 
 const pageUrl = new URL(location.href)
 
@@ -11,7 +11,7 @@ async function main() {
   FunMetric.define()
   CupsGraph.define()
   BeansGraph.define()
-  HourlyRadar.define()
+  HourlyGraph.define()
 
   const { username, beans, cups } = await fetch('./member.json').then((r) =>
     r.json(),

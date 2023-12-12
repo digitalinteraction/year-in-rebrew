@@ -1,4 +1,5 @@
 import { Application, Sprite, Texture, Graphics } from 'pixi.js'
+import { watchColorScheme } from '../lib/dark-mode.mjs'
 
 const WIDTH = 640
 const HEIGHT = 300
@@ -79,25 +80,46 @@ export class UsagePlanet extends HTMLElement {
   })
   imageMask = new Graphics()
   colourMask = new Graphics()
+  colorScheme = 'light'
 
   /** @type {Orbital[]} */ orbitals = []
 
-  textures = {
-    cup: Texture.fromURL('/assets/img/cup.png'),
-    bean: Texture.fromURL('/assets/img/bean.png'),
-  }
+  /** @type {Record<'dark'|'light', Record<string, Texture>>} */
+  textures = {}
 
   static define() {
     customElements.define('usage-planet', this)
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     this.app.stage.sortableChildren = true
-    this.render()
+    this.appendChild(this.app.view)
+
+    watchColorScheme((scheme) => {
+      this.colorScheme = scheme
+      console.log(this.colorScheme)
+    })
+
+    await this.loadTextures()
+    await this.render()
+
+    this.app.ticker.add((dt) => this.tick(dt))
+  }
+
+  async loadTextures() {
+    this.textures = {
+      light: {
+        cup: await Texture.fromURL('/assets/img/cup-light.png'),
+        bean: await Texture.fromURL('/assets/img/bean-light.png'),
+      },
+      dark: {
+        cup: await Texture.fromURL('/assets/img/cup-dark.png'),
+        bean: await Texture.fromURL('/assets/img/bean-dark.png'),
+      },
+    }
   }
 
   async render() {
-    const imageSrc = this.getAttribute('image')
     const endpoint = this.getAttribute('endpoint')
 
     const data = await fetch(endpoint)
@@ -105,7 +127,7 @@ export class UsagePlanet extends HTMLElement {
       .catch(() => null)
 
     if (!data) {
-      console.error('Failed to fetch data')
+      console.error('<usage-planet> Failed to fetch data')
       return
     }
     const { cups, beans } = data
@@ -117,21 +139,19 @@ export class UsagePlanet extends HTMLElement {
     this.imageMask.beginFill(0x000000)
     this.imageMask.drawEllipse(WIDTH / 2, HEIGHT / 2, 100, 100)
 
-    const image = Sprite.from(imageSrc)
-    image.position.x = WIDTH * 0.5
-    image.position.y = HEIGHT * 0.5
-    image.anchor.x = 0.5
-    image.anchor.y = 0.5
-    image.width = 200
-    image.height = 200
-    image.zIndex = 0
-    image.mask = this.imageMask
-    this.app.stage.addChild(image)
-    this.image = image
-
-    this.appendChild(this.app.view)
-
-    this.app.ticker.add((dt) => this.tick(dt))
+    if (!this.image && this.hasAttribute('image')) {
+      const image = Sprite.from(this.getAttribute('image'))
+      image.position.x = WIDTH * 0.5
+      image.position.y = HEIGHT * 0.5
+      image.anchor.x = 0.5
+      image.anchor.y = 0.5
+      image.width = 200
+      image.height = 200
+      image.zIndex = 0
+      image.mask = this.imageMask
+      this.app.stage.addChild(image)
+      this.image = image
+    }
 
     this.addOrbits(cups, beans)
   }
@@ -161,8 +181,8 @@ export class UsagePlanet extends HTMLElement {
     }
   }
 
-  addCup(t, temp = random(0, 1)) {
-    const sprite = Sprite.from('/assets/img/cup.png')
+  addCup(t, y = random(0, 1)) {
+    const sprite = new Sprite(this.textures[this.colorScheme].cup)
     sprite.width = 17
     sprite.height = 12
     sprite.anchor.x = 0.5
@@ -172,27 +192,28 @@ export class UsagePlanet extends HTMLElement {
       new Orbital(
         sprite,
         random(-40, 40),
-        spread(temp, CUP_SPREAD),
+        spread(y, CUP_SPREAD),
         t,
         CUP_RADIUS,
       ),
     )
   }
   addBean(t) {
-    const sprite = Sprite.from('/assets/img/bean.png')
-    sprite.width = 40
-    sprite.height = 40
+    const sprite = new Sprite(this.textures[this.colorScheme].bean)
+    sprite.width = 32
+    sprite.height = 46
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)
     this.orbitals.push(new Orbital(sprite, 0, 0, t, BEAN_RADIUS))
   }
 
-  /** @param {number} dt */
-  tick(dt) {
+  tick(_dt) {
     let now = Date.now()
     for (const o of this.orbitals) o.update(now)
 
-    this.image.rotation = Math.sin(now * 0.002) * 0.1
+    if (this.image) {
+      this.image.rotation = Math.sin(now * 0.002) * 0.05
+    }
   }
 }

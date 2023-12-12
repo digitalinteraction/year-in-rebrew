@@ -1,9 +1,9 @@
-import { Chart, shortMonths } from '../lib/chart.mjs'
+import { Chart } from '../lib/chart.mjs'
 import { watchColorScheme } from '../lib/dark-mode.mjs'
 
-export class BeansGraph extends HTMLElement {
+export class HourlyGraph extends HTMLElement {
   static define() {
-    customElements.define('beans-graph', this)
+    customElements.define('hourly-graph', this)
   }
   connectedCallback() {
     this.canvas = document.createElement('canvas')
@@ -18,10 +18,9 @@ export class BeansGraph extends HTMLElement {
     return {
       color: color,
       borderColor: color,
-      backgroundColor: color,
       tension: 0.4,
       pointStyle: false,
-      borderWidth: 0,
+      borderWidth: 5,
       plugins: {
         legend: false,
       },
@@ -29,28 +28,35 @@ export class BeansGraph extends HTMLElement {
   }
 
   async render() {
-    const monthly = await fetch(this.getAttribute('endpoint'))
+    const hourly = await fetch(this.getAttribute('endpoint'))
       .then((r) => r.json())
       .catch(() => null)
 
-    if (!monthly) {
-      console.error('<beans-graph> failed to fetch data')
+    if (!hourly) {
+      console.error('<hourly-graph> failed to fetch data')
       return
     }
+
+    // prettier-ignore
+    const labels = [
+      'Midnight', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am',
+      'Noon', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm',
+    ]
+
+    const trim = (arr) => arr.slice(7, 20)
 
     if (this.chart) {
       this.chart.options = this.getChartOptions()
       this.chart.update()
     } else {
       this.chart = new Chart(this.canvas, {
-        type: 'bar',
+        type: 'line',
         data: {
-          labels: shortMonths,
+          labels: trim(labels),
           datasets: [
             {
-              label: 'Beans purchased',
-              data: monthly,
-              borderRadius: 4,
+              label: 'Cups of coffee',
+              data: trim(hourly),
             },
           ],
         },

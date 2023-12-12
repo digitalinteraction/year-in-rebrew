@@ -57,7 +57,7 @@ costaCost: 3.2
             On average each cup of coffee cost you 
             <span class="coolStat">{{ costPerCup | formatCost }}</span>.
 
-            That's <span class="coolStat">{{ (downstairsCost / costPerCup).toFixed(0) }}⨉</span> cheaper than downstairs. Through the year, the same coffees would have cost you <span class="coolStat">£{{ (totalCups * costaCost).toFixed(2) }}</span> at Costa!
+            That's <span class="coolStat">{{ (downstairsCost / costPerCup).toFixed(0) }}⨉</span> cheaper than downstairs. Those same coffees would have cost you <span class="coolStat">£{{ (totalCups * costaCost).toFixed(2) }}</span> at Costa!
           </p>
           {% endif %}
         </section>
@@ -98,7 +98,7 @@ costaCost: 3.2
               </span>
             </div>
           </switcher-layout>
-          <hourly-radar endpoint="./hourly-cups.json"></hourly-radar>
+          <hourly-graph endpoint="./hourly-cups.json"></hourly-graph>
         </section>
       </cover-layout>
       

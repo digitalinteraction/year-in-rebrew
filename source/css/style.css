@@ -1,12 +1,14 @@
 :root {
   --color: #413934;
   --background: #b3a798;
+  --highlight: #c8bdb0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --color: #b59581;
     --background: #292424;
+    --highlight: #332d2d;
   }
 }
 
@@ -68,7 +70,7 @@ canvas {
 
 cups-graph,
 beans-graph,
-hourly-radar {
+hourly-graph {
   display: block;
   color: var(--color);
   background-color: var(--highlight);
