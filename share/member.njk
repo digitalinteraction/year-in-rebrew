@@ -6,6 +6,8 @@ pagination:
   alias: member
   resolve: values
 permalink: 'share/{{ member.username | hash }}/index.html'
+
+sectionHeight: 50vh
 ---
 
 {% set totalCups = member.cups | sumRecords %}
@@ -21,85 +23,94 @@ permalink: 'share/{{ member.username | hash }}/index.html'
         <p>It's <em>bean</em> a year to remember!</p>
       </header>
 
-      <center-layout intrinsic>
-        <usage-planet
-          image="{{ headshots[member.username] }}"
-          cups="{{ totalCups }}"
-          bags="{{ totalBags }}"
-        ></usage-planet>
-      </center-layout>
+      <cover-layout centered="center-layout" space="0" minHeight="{{ sectionHeight }}">
+        <center-layout intrinsic>
+          <usage-planet
+            image="{{ headshots[member.username] }}"
+            endpoint="./usage.json"
+          ></usage-planet>
+        </center-layout>
+      </cover-layout>
       
-      <section class="textStats flow">
-        {% if totalCups === 0 %}
-        <p>You didn't drink any coffee this year.</p>
-        {% else %}
-        <p>
-          You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee,
-          that's about <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>.
-        </p>
-        {% endif %}
-        
-        {% if totalBeans == 0 %}
-        <p>You didn't buy any coffee this year.</p>
-        {% else %}
-        <p>
-          You bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
-          That's about <fun-metric type="weight" value="{{ totalBeans }}"></fun-metric>
-          or <fun-metric type="length" value="{{ totalBeans * config.beansPerKilogram * config.beanLength }}"></fun-metric> if you lined up all the beans.
-        </p>
-        <p>
-          On average each cup of coffee cost you 
-          <span class="coolStat">{{ costPerCup | formatCost }}</span>.
-          That's <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>!
-        </p>
-        {% endif %}
-      </section>
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="textStats flow">
+          {% if totalCups === 0 %}
+          <p>You didn't drink any coffee this year.</p>
+          {% else %}
+          <p>
+            You had <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee,
+            that's about <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>.
+          </p>
+          {% endif %}
+          
+          {% if totalBeans == 0 %}
+          <p>You didn't buy any coffee this year.</p>
+          {% else %}
+          <p>
+            You bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
+            That's about <fun-metric type="weight" value="{{ totalBeans }}"></fun-metric>
+            or <fun-metric type="length" value="{{ totalBeans * config.beansPerKilogram * config.beanLength }}"></fun-metric> if you lined up all the beans.
+          </p>
+          <p>
+            On average each cup of coffee cost you 
+            <span class="coolStat">{{ costPerCup | formatCost }}</span>.
+            That's <fun-metric type="cost" value="{{ costPerCup }}"></fun-metric>!
+          </p>
+          {% endif %}
+        </section>
+      </cover-layout>
       
-      <section class="flow">
-        <h2>Daily coffees</h2>
-        <switcher-layout limit="5">
-          <div class="dayCard">
-            <header>MON</header>
-            <span class="coolStat">
-              {{ member.cups | dailyAverage(1) | formatCups }}
-            </span>
-          </div>
-          <div class="dayCard">
-            <header>TUE</header>
-            <span class="coolStat">
-              {{ member.cups | dailyAverage(2) | formatCups }}
-            </span>
-          </div>
-          <div class="dayCard">
-            <header>WED</header>
-            <span class="coolStat">
-              {{ member.cups | dailyAverage(3) | formatCups }}
-            </span>
-          </div>
-          <div class="dayCard">
-            <header>THU</header>
-            <span class="coolStat">
-              {{ member.cups | dailyAverage(4) | formatCups }}
-            </span>
-          </div>
-          <div class="dayCard">
-            <header>FRI</header>
-            <span class="coolStat">
-              {{ member.cups | dailyAverage(5) | formatCups }}
-            </span>
-          </div>
-        </switcher-layout>
-      </section>
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>Daily coffees</h2>
+          <switcher-layout limit="5">
+            <div class="dayCard">
+              <header>MON</header>
+              <span class="coolStat">
+                {{ member.cups | dailyAverage(1) | formatCups }}
+              </span>
+            </div>
+            <div class="dayCard">
+              <header>TUE</header>
+              <span class="coolStat">
+                {{ member.cups | dailyAverage(2) | formatCups }}
+              </span>
+            </div>
+            <div class="dayCard">
+              <header>WED</header>
+              <span class="coolStat">
+                {{ member.cups | dailyAverage(3) | formatCups }}
+              </span>
+            </div>
+            <div class="dayCard">
+              <header>THU</header>
+              <span class="coolStat">
+                {{ member.cups | dailyAverage(4) | formatCups }}
+              </span>
+            </div>
+            <div class="dayCard">
+              <header>FRI</header>
+              <span class="coolStat">
+                {{ member.cups | dailyAverage(5) | formatCups }}
+              </span>
+            </div>
+          </switcher-layout>
+        </section>
+      </cover-layout>
       
-      <section class="flow">
-        <h2>Your coffees this year</h2>
-        <member-cups-graph></member-cups-graph>
-      </section>
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>Your coffees this year</h2>
+          <cups-graph endpoint="./monthly-cups.json"></cups-graph>
+        </section>
+      </cover-layout>
       
-      <section class="flow">
-        <h2>Your purchases</h2>
-        <member-beans-graph></member-beans-graph>
-      </section>
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>Your purchases</h2>
+          <beans-graph endpoint="./monthly-beans.json"></beans-graph>
+        </section>
+      </cover-layout>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>

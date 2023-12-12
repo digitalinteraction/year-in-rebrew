@@ -3,6 +3,17 @@ import { Application, Sprite, Texture, Graphics } from 'pixi.js'
 const WIDTH = 640
 const HEIGHT = 300
 
+const startOfYear = new Date('2023-01-01')
+const endOfYear = new Date('2024-01-01')
+const msPerDay = 24 * 60 * 60 * 1_000
+
+/**
+ * @typedef {object} Resource
+ * @property {string} createdAt
+ * @property {string} resource
+ * @property {number} quantity
+ */
+
 export class Orbital {
   /**
     @param {Sprite} sprite 
@@ -20,7 +31,7 @@ export class Orbital {
   }
   /** @param {number} timeElapsed */
   update(timeElapsed) {
-    const t = timeElapsed * 0.0005 + this.tOffest * Math.PI
+    const t = timeElapsed * 0.0005 + this.tOffest * Math.PI * 2
 
     this.sprite.zIndex = Math.cos(t) > 0 ? 1 : -1
     this.sprite.position.x = WIDTH * 0.5 + this.xOffset + Math.sin(t) * this.r
@@ -58,11 +69,23 @@ export class UsagePlanet extends HTMLElement {
   }
 
   connectedCallback() {
-    const imageSrc = this.getAttribute('image')
-    const cups = parseInt(this.getAttribute('cups')) || 0
-    const bags = parseInt(this.getAttribute('bags')) || 0
-
     this.app.stage.sortableChildren = true
+    this.render()
+  }
+
+  async render() {
+    const imageSrc = this.getAttribute('image')
+    const endpoint = this.getAttribute('endpoint')
+
+    const data = await fetch(endpoint)
+      .then((r) => r.json())
+      .catch(() => null)
+
+    if (!data) {
+      console.error('Failed to fetch data')
+      return
+    }
+    const { cups, beans } = data
 
     const color = getComputedStyle(document.body).getPropertyValue('--color')
     this.colourMask.beginFill(color)
@@ -90,22 +113,35 @@ export class UsagePlanet extends HTMLElement {
 
     this.app.ticker.add((dt) => this.tick(dt))
 
-    this.addOrbits(cups, bags)
+    this.addOrbits(cups, beans)
   }
 
-  async addOrbits(cups, bags) {
-    for (let i = 0; i < bags; i++) {
-      this.addBean()
-      await pause(1000 / (bags || 1))
+  /**
+   * @param {Resource[]} cups
+   * @param {Resource[]} beans
+   */
+  async addOrbits(cups, beans) {
+    for (const record of beans) {
+      const t = percentThroughYear(
+        new Date(record.createdAt),
+        startOfYear,
+        endOfYear,
+      )
+      this.addBean(t)
+      await pause(1000 / (beans.length || 1))
     }
+
     await pause(1000)
-    for (let i = 0; i < cups; i++) {
-      this.addCup()
-      await pause(2000 / (cups || 1))
+    for (const record of cups) {
+      const date = new Date(record.createdAt)
+      const t = percentThroughYear(date, startOfYear, endOfYear)
+      const u = (date.getTime() % msPerDay) / msPerDay
+      this.addCup(t, u)
+      await pause(3000 / (cups.length || 1))
     }
   }
 
-  addCup() {
+  addCup(t, temp = random(0, 1)) {
     const sprite = Sprite.from('/assets/img/cup.png')
     sprite.width = 17
     sprite.height = 12
@@ -113,10 +149,10 @@ export class UsagePlanet extends HTMLElement {
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)
     this.orbitals.push(
-      new Orbital(sprite, random(-40, 40), random(-40, 40), random(-1, 1), 180),
+      new Orbital(sprite, random(-40, 40), temp * 200 - 100, t, 180),
     )
   }
-  addBean() {
+  addBean(t) {
     const sprite = Sprite.from('/assets/img/bean.png')
     sprite.width = 40
     sprite.height = 40
@@ -124,7 +160,7 @@ export class UsagePlanet extends HTMLElement {
     sprite.anchor.y = 0.5
     this.app.stage.addChild(sprite)
     this.orbitals.push(
-      new Orbital(sprite, random(-20, 20), random(-20, 20), random(-1, 1), 280),
+      new Orbital(sprite, random(-20, 20), random(-20, 20), t, 280),
     )
   }
 
@@ -135,4 +171,14 @@ export class UsagePlanet extends HTMLElement {
 
     this.image.rotation = Math.sin(now * 0.002) * 0.1
   }
+}
+
+/**
+ * @param {Date} input
+ * @param {Date} startOfYear
+ * @param {Date} endOfYear
+ */
+function percentThroughYear(input, startOfYear, endOfYear) {
+  const ms = input.getTime() - startOfYear.getTime()
+  return ms / (endOfYear.getTime() - startOfYear.getTime())
 }

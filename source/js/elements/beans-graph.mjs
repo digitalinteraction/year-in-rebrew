@@ -1,23 +1,24 @@
 import { Chart, shortMonths } from '../lib/chart.mjs'
 
-export class MemberCupsGraph extends HTMLElement {
+export class BeansGraph extends HTMLElement {
   static define() {
-    customElements.define('member-cups-graph', this)
+    customElements.define('beans-graph', this)
   }
   connectedCallback() {
     this.canvas = document.createElement('canvas')
     this.appendChild(this.canvas)
 
-    this.setup()
+    this.render()
   }
 
-  async setup() {
-    const data = await fetch('./member.json').then((r) => r.json())
+  async render() {
+    const monthly = await fetch(this.getAttribute('endpoint'))
+      .then((r) => r.json())
+      .catch(() => null)
 
-    const monthly = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    for (const record of data.cups) {
-      const date = new Date(record.createdAt)
-      monthly[date.getMonth()] += record.quantity
+    if (!monthly) {
+      console.error('<cups-graph> failed to fetch data')
+      return
     }
 
     const color = getComputedStyle(document.body).getPropertyValue('--color')
@@ -26,13 +27,15 @@ export class MemberCupsGraph extends HTMLElement {
     )
 
     this.chart = new Chart(this.canvas, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: shortMonths,
         datasets: [
           {
-            label: 'Cups of coffee',
+            label: 'Beans purchased',
             data: monthly,
+            backgroundColor: color,
+            borderRadius: 4,
           },
         ],
       },
@@ -42,7 +45,7 @@ export class MemberCupsGraph extends HTMLElement {
         backgroundColor: highlight,
         tension: 0.4,
         pointStyle: false,
-        borderWidth: 5,
+        borderWidth: 0,
         plugins: {
           legend: false,
         },
