@@ -4,19 +4,22 @@
   --highlight: #c8bdb0;
 }
 
+body {
+  background-repeat: repeat;
+  background: var(--background) url(/assets/img/noise-light.svg);
+  background-blend-mode: luminosity;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --color: #b59581;
     --background: #292424;
     --highlight: #332d2d;
   }
-}
-
-body {
-  /* background-image: url(/assets/img/blue-noise.png); */
-  /* background-repeat: repeat; */
-  /* background-blend-mode: color-burn; */
-  background-image: url(/assets/img/noise.svg);
+  body {
+    /* background: var(--background) url(/assets/img/noise-dark.svg); */
+    /* background-blend-mode: luminosity; */
+  }
 }
 
 .pageHeader {
