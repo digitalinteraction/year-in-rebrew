@@ -17,13 +17,24 @@ costaCost: 3.2
 {% set totalBags = member.beans.length %}
 {% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
 
+{% macro latte2() %}
+<svg viewBox="0 0 19.66 71.78" style="transform: scale(1.5);">
+  <use xlink:href="/assets/img/latte-art-2.svg#art"></use>
+</svg>
+{% endmacro %}
+
 <main>
   <center-layout>
     <stack-layout space="s4">
-      <header class="pageHeader">
-        <h1>{{ site.title }}</h1>
-        <p>It's <em>bean</em> a year to remember!</p>
-      </header>
+      <cluster-layout space="s1" align="center" justify="center">
+        <svg height="100" viewBox="0 0 120 170">
+          <use xlink:href="/assets/img/latte-art-1.svg#art"></use>
+        </svg>
+        <header class="pageHeader">
+          <h1>{{ site.title }}</h1>
+          <p>It's <em>bean</em> a year to remember!</p>
+        </header>
+      </cluster-layout>
 
       <cover-layout centered="center-layout" space="0" minHeight="{{ sectionHeight }}">
         <center-layout intrinsic>
@@ -69,7 +80,12 @@ costaCost: 3.2
       
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
-          <h2>Coffees habbits</h2>
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Coffees habbits
+            </icon-layout>
+          </h2>
           <switcher-layout limit="5">
             <div class="dayCard">
               <header>MON</header>
@@ -113,7 +129,12 @@ costaCost: 3.2
       {% if totalCups > 0 %}
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
-          <h2>Your coffees this year</h2>
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Your coffees this year
+            </icon-layout>
+          </h2>
           <cups-graph endpoint="./monthly-cups.json"></cups-graph>
         </section>
         <details class="hint">
@@ -126,7 +147,12 @@ costaCost: 3.2
       {% if totalBeans > 0 %}
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
-          <h2>Your purchases</h2>
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Your purchases
+            </icon-layout>
+          </h2>
           <beans-graph endpoint="./monthly-beans.json"></beans-graph>
         </section>
         <details class="hint">
@@ -136,23 +162,36 @@ costaCost: 3.2
       </cover-layout>
       {% endif %}
       
+      {% if peers.goodies.length > 0 %}
       <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <p>
             Your coffee comrade is ... <span class="coolStat">{{ peers.goodies[0].username }}</span>,
             you shared <span class="coolStat">{{ peers.goodies[0].value }}</span> coffees together!
           </p>
-          <p>
-            Your coffee nemesis is ... <span class="coolStat">{{ peers.baddies[0].username }}</span>,
-            you missed sharing a coffee with them on <span class="coolStat">{{ peers.baddies[0].value }}</span> days!
-          </p>
-          
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>This is based on who you shared the most coffees with and who you didn't have a coffee with, on days when you had a coffee.</p>
+          <p>Your comrade is who you shared the most coffees with, people who had a coffee within 5 minutes of you.</p>
         </details>
       </cover-layout>
+      {% endif %}
+      
+      {% if peers.baddies.length > 0 %}
+      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2 class="text-align:center">Your coffee nemesis</h2>
+          <figure>
+            <nemesis-frame headshot="{{ headshots[peers.baddies[0].username] }}"></nemesis-frame>
+            <figcaption>You avoided each other on {{ peers.baddies[0].value }} days.</figcaption>
+          </figure>
+        </section>
+        <details class="hint">
+          <summary>info</summary>
+          <p>Your nemesis is the person who you had the most coffees on the same day but not within 5 minutes of each other.</p>
+        </details>
+      </cover-layout>
+      {% endif %}
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>
