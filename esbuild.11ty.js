@@ -23,7 +23,7 @@ module.exports = class EsbuildTemplate {
       outdir: '_site',
       sourcemap: !isProduction,
       target: isProduction ? 'es2020' : 'esnext',
-      external: ['*.png'],
+      external: ['*.png', '*.svg'],
     })
   }
 }

@@ -12,6 +12,13 @@
   }
 }
 
+body {
+  /* background-image: url(/assets/img/blue-noise.png); */
+  /* background-repeat: repeat; */
+  /* background-blend-mode: color-burn; */
+  background-image: url(/assets/img/noise.svg);
+}
+
 .pageHeader {
   /* text-align: center; */
 }

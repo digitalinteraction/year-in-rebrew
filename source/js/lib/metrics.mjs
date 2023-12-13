@@ -1,3 +1,5 @@
+import { getFractional } from './fractions.mjs'
+
 const scaleFormatter = new Intl.NumberFormat('en-GB', {
   maximumFractionDigits: 0,
 })
@@ -58,8 +60,12 @@ export function getFunVolume(input) {
 //
 
 const funWeights = {
-  'can of pop': 0.343,
+  'garden gnome': 0.309,
+  'MacBook Pro': 1.83,
+  'bowling ball': 5,
+  'studio display': 6.3,
   corgi: 12.24699,
+  yoda: 13,
   dalmatian: 31.75147,
 }
 
@@ -71,9 +77,11 @@ export function getFunWeight(input) {
     return `the weight of a ${metric.name}`
   }
   if (scale.value > 1) {
-    return `${scale.name}⨉ the weight of a ${metric.name}`
+    return `${scale.name} × the weight of a ${metric.name}`
   }
-  return `${scale.name} of the weight of a ${metric.name}`
+  const msg = `${scale.name} of the weight of a ${metric.name}`
+  console.log(scale, metric, msg)
+  return msg
 }
 
 //
@@ -118,14 +126,31 @@ export function getFunCost(input) {
   const costa = (funCosts.costa / input).toFixed(0)
   const downstairs = (funCosts.downstairs / input).toFixed(0)
 
-  return `${downstairs}⨉ cheaper than downstairs, through the year it would have cost you £${costa} at Costa`
+  return `${downstairs} × cheaper than downstairs, through the year it would have cost you £${costa} at Costa`
+}
+
+export function getFunMetric(input, targetMetric) {
+  // getFractional
+  const [metric] = sortMetrics(targetMetric).sort(
+    (a, b) => Math.abs(a.value - input) - Math.abs(b.value - input),
+  )
+
+  const value = input / metric.value
+
+  return {
+    metric,
+    scale: {
+      name: getFractional(value),
+      value,
+    },
+  }
 }
 
 /**
  * @param {number} input
  * @param {Record<string,number>} metric
  */
-export function getFunMetric(input, targetMetric) {
+export function xgetFunMetric(input, targetMetric) {
   const metrics = sortMetrics(targetMetric)
   for (const scale of niceScales) {
     for (const metric of metrics) {
