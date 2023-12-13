@@ -16,10 +16,10 @@
   text-align: center;
 }
 .pageHeader h1 {
-  font-size: 4vw;
+  font-size: min(max(1.5rem, 4vw), 48px);
 }
 .pageHeader p {
-  font-size: 1.5vw;
+  font-size: min(max(1rem, 1.5vw), 48px);
 }
 
 .textStats {
@@ -76,4 +76,19 @@ hourly-graph {
   background-color: var(--highlight);
   padding: var(--s-1);
   border-radius: var(--s0);
+}
+
+.hint {
+  font-style: italic;
+  font-size: 0.8em;
+  opacity: 0.7;
+  align-self: flex-end;
+}
+.hint summary:focus {
+  outline: none;
+}
+.hint {
+  padding: var(--s-3);
+  border: var(--s-5) dashed var(--color);
+  border-radius: var(--s-2);
 }

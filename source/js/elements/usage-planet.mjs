@@ -8,7 +8,7 @@ const startOfYear = new Date('2023-01-01')
 const endOfYear = new Date('2024-01-01')
 const msPerDay = 24 * 60 * 60 * 1_000
 
-const CUPS_DURATION = 6_000
+const CUPS_DURATION = 4_000
 const BEANS_DURATION = 2_000
 
 const CUP_RADIUS = 180
@@ -84,7 +84,6 @@ export class UsagePlanet extends HTMLElement {
 
   /** @type {Orbital[]} */ orbitals = []
 
-  /** @type {Record<'dark'|'light', Record<string, Texture>>} */
   textures = {}
 
   static define() {
@@ -107,6 +106,7 @@ export class UsagePlanet extends HTMLElement {
 
   async loadTextures() {
     this.textures = {
+      orb: await Texture.fromURL('/assets/img/orb.png'),
       light: {
         cup: await Texture.fromURL('/assets/img/cup-light.png'),
         bean: await Texture.fromURL('/assets/img/bean-light.png'),
@@ -150,6 +150,19 @@ export class UsagePlanet extends HTMLElement {
       image.mask = this.imageMask
       this.app.stage.addChild(image)
       this.image = image
+    }
+    if (!this.orb && this.hasAttribute('image')) {
+      const orb = new Sprite(this.textures.orb)
+      orb.position.x = WIDTH * 0.5
+      orb.position.y = HEIGHT * 0.5
+      orb.anchor.x = 0.5
+      orb.anchor.y = 0.5
+      orb.height = 200
+      orb.width = 200
+      orb.zIndex = 0
+      orb.alpha = 0.75
+      this.app.stage.addChild(orb)
+      this.orb = orb
     }
 
     this.addOrbits(cups, beans)
