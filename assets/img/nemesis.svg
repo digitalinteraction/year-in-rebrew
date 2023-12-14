@@ -43,6 +43,22 @@
       #cup-2 {
       transform-origin: center;
       }
+
+      @media (prefers-color-scheme: dark) {
+      .cup_shadow, .cup_rim, .cup_dark-shadow {
+      fill: #978c81;
+      stroke-width: 0;
+      }
+      .cup-colour {
+      fill: #e2dbd6;
+      }
+      .cup_medium-shadow {
+      fill: #bfb6b0;
+      }
+      .steam_very-dark-shadow {
+      fill: #4b3b30;
+      }
+      }
     </style>
   </defs>
   <g id="Layer_2-2" fill="currentColor">
