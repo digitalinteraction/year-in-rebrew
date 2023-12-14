@@ -14,7 +14,7 @@ function hash(value) {
 }
 
 const cupsFormat = new Intl.NumberFormat('en-GB', {
-  notation: 'compact',
+  notation: 'standard',
 })
 const beansFormat = new Intl.NumberFormat('en-GB', {
   maximumSignificantDigits: 3,
@@ -64,6 +64,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('formatBeans', (v) => formatBeans(v))
   eleventyConfig.addFilter('formatCost', (v) => formatCost(v))
   eleventyConfig.addFilter('dailyAverage', (v, d) => dailyAverage(v, d))
+
+  eleventyConfig.addFilter('demember', (v, key) => {
+    const result = []
+    for (const member of Object.values(v)) result.push(...member[key])
+    return result
+  })
 
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')

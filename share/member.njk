@@ -9,8 +9,6 @@ permalink: 'share/{{ member.username | hash }}/index.html'
 
 sectionHeight: 50vh
 sectionSpace: s0
-downstairsCost: 2.1
-costaCost: 3.2
 ---
 
 {% set totalCups = member.cups | sumRecords %}
@@ -73,14 +71,14 @@ costaCost: 3.2
             On average each cup of coffee cost you 
             <span class="coolStat">{{ costPerCup | formatCost }}</span>.
 
-            That's <span class="coolStat">{{ (downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost you <span class="coolStat">£{{ (totalCups * costaCost).toFixed(2) }}</span> at Costa!
+            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost you <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
           </p>
           {% endif %}
 
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>All stats are pretty relative. The cost per cup is based on 1 kg of beans costing £16 then multiplying by your beans bought and dividing that by the number of cups drank. The relative cost is based on an americano costing £{{ downstairsCost.toFixed(2) }} downstairs and £{{ costaCost.toFixed(2) }} at Costa. </p>
+          <p>All stats are pretty relative. The cost per cup is based on 1 kg of beans costing £16 then multiplying by your beans bought and dividing that by the number of cups drank. The relative cost is based on an americano costing £{{ config.downstairsCost.toFixed(2) }} downstairs and £{{ config.costaCost.toFixed(2) }} at Costa. </p>
         </details>
       </cover-layout>
       

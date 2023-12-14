@@ -3,6 +3,8 @@
   "beansPerKilogram": 8400,
   "beanLength": 0.0090617,
   "cupVolume": 0.25,
+  "downstairsCost": 2.1,
+  "costaCost": 3.2,
   "headshotRemaps": {
     "dave-kirk": "david-kirk",
     "jan-smeddinck": "jan-smeddick",

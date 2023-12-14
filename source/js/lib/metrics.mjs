@@ -65,7 +65,7 @@ const funWeights = {
   'bowling ball': 5,
   'studio display': 6.3,
   corgi: 12.24699,
-  yoda: 13,
+  Yoda: 13,
   dalmatian: 31.75147,
 }
 
@@ -93,6 +93,7 @@ const funLengths = {
   cow: 2.45,
   pencil: 0.19,
   'blue whale': 29.9,
+  "Hadrian's Tower": 82,
 }
 
 /** @param {number} input */

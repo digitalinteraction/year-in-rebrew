@@ -1,20 +1,103 @@
 ---
 layout: html.njk
+sectionHeight: 50vh
+sectionSpace: s0
 ---
+
+{% set totalCups = beancounter.users | demember('cups') | sumRecords %}
+{% set totalBeans = (beancounter.users | demember('beans') | sumRecords) / 1000 %}
+{% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
+
+{% macro latte2() %}
+<svg viewBox="0 0 19.66 71.78" style="transform: scale(1.5);">
+  <use xlink:href="/assets/img/latte-art-2.svg#art"></use>
+</svg>
+{% endmacro %}
 
 <main>
   <center-layout>
-    <stack-layout space="s5">
-      <h1 class="pageTitle">{{ site.title }}</h1>
+    <stack-layout space="s4">
+      <cluster-layout space="s1" align="center" justify="center">
+        <svg height="100" viewBox="0 0 120 170">
+          <use xlink:href="/assets/img/latte-art-1.svg#art"></use>
+        </svg>
+        <header class="pageHeader">
+          <h1>{{ site.title }}</h1>
+          <p>It's bean a year to remember!</p>
+        </header>
+      </cluster-layout>
 
-      <p>This website is a reflection for members of Open Lab's Coffee Club</p>
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="textStats flow">
+          <p>
+            This website is a reflection for members of Open Lab's Coffee Club in 2023.
+          </p>
+          <p>
+            We drank <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee,
+            that's about <fun-metric type="volume" value="{{ totalCups * config.cupVolume }}"></fun-metric>.
+          </p>
+          <p>
+            We bought <span class="coolStat">{{ totalBeans | formatBeans }}</span> of beans.
+            That's about <fun-metric type="weight" value="{{ totalBeans }}"></fun-metric>
+            or <fun-metric type="length" value="{{ totalBeans * config.beansPerKilogram * config.beanLength }}"></fun-metric> if you lined up all the beans.
+          </p>
+          <p>
+            On average each cup of coffee cost 
+            <span class="coolStat">{{ costPerCup | formatCost }}</span>.
 
-      <section class="flow">
-        <h2>Cups drank</h2>
-        <cups-graph></cups-graph>
-      </section>
+            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
+          </p>
+        </section>
+      </cover-layout>
+
+      <cover-layout centered="center-layout" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <center-layout intrinsic>
+          <usage-planet
+            endpoint="./usage.json"
+          ></usage-planet>
+        </center-layout>
+      </cover-layout>
+
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Lab flow
+            </icon-layout>
+          </h2>
+          <hourly-graph endpoint="./hourly-cups.json" class="card"></hourly-graph>
+        </section>
+      </cover-layout>
+
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Coffees throughout year
+            </icon-layout>
+          </h2>
+          <cups-graph endpoint="./monthly-cups.json" class="card"></cups-graph>
+        </section>
+      </cover-layout>
+      
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Beans bought
+            </icon-layout>
+          </h2>
+          <beans-graph endpoint="./monthly-beans.json" class="card"></beans-graph>
+        </section>
+      </cover-layout>
+
     </stack-layout>
   </center-layout>
 </main>
+
+{% include 'footer.njk' %}
 
 <script type="module" src="/js/home.js"></script>
