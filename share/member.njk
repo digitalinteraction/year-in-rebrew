@@ -8,6 +8,7 @@ pagination:
 permalink: 'share/{{ member.username | hash }}/index.html'
 
 sectionHeight: 50vh
+sectionSpace: s0
 downstairsCost: 2.1
 costaCost: 3.2
 ---
@@ -32,11 +33,11 @@ costaCost: 3.2
         </svg>
         <header class="pageHeader">
           <h1>{{ site.title }}</h1>
-          <p>It's <em>bean</em> a year to remember!</p>
+          <p>It's bean a year to remember!</p>
         </header>
       </cluster-layout>
 
-      <cover-layout centered="center-layout" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="center-layout" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <center-layout intrinsic>
           <usage-planet
             image="{{ headshots[member.username] }}"
@@ -49,7 +50,7 @@ costaCost: 3.2
         </details>
       </cover-layout>
       
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="textStats flow">
           {% if totalCups === 0 %}
           <p>You didn't drink any coffee this year.</p>
@@ -78,7 +79,7 @@ costaCost: 3.2
         </section>
       </cover-layout>
       
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <h2>
             <icon-layout>
@@ -118,7 +119,7 @@ costaCost: 3.2
               </span>
             </div>
           </switcher-layout>
-          <hourly-graph endpoint="./hourly-cups.json"></hourly-graph>
+          <hourly-graph endpoint="./hourly-cups.json" class="card"></hourly-graph>
         </section>
         <details class="hint">
           <summary>info</summary>
@@ -127,15 +128,15 @@ costaCost: 3.2
       </cover-layout>
       
       {% if totalCups > 0 %}
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <h2>
             <icon-layout>
               {{ latte2() }}
-              Your coffees this year
+              Coffees throughout year
             </icon-layout>
           </h2>
-          <cups-graph endpoint="./monthly-cups.json"></cups-graph>
+          <cups-graph endpoint="./monthly-cups.json" class="card"></cups-graph>
         </section>
         <details class="hint">
           <summary>info</summary>
@@ -145,15 +146,15 @@ costaCost: 3.2
       {% endif %}
       
       {% if totalBeans > 0 %}
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="flow">
           <h2>
             <icon-layout>
               {{ latte2() }}
-              Your purchases
+              Beans bought
             </icon-layout>
           </h2>
-          <beans-graph endpoint="./monthly-beans.json"></beans-graph>
+          <beans-graph endpoint="./monthly-beans.json" class="card"></beans-graph>
         </section>
         <details class="hint">
           <summary>info</summary>
@@ -163,8 +164,14 @@ costaCost: 3.2
       {% endif %}
       
       {% if peers.goodies.length > 0 %}
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Comrade
+            </icon-layout>
+          </h2>
           <p>
             Your coffee comrade is ... <span class="coolStat">{{ peers.goodies[0].username }}</span>,
             you shared <span class="coolStat">{{ peers.goodies[0].value }}</span> coffees together!
@@ -178,11 +185,19 @@ costaCost: 3.2
       {% endif %}
       
       {% if peers.baddies.length > 0 %}
-      <cover-layout centered="section" space="0" minHeight="{{ sectionHeight }}">
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="flow">
-          <h2 class="text-align:center">Your coffee nemesis</h2>
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Nemesis
+            </icon-layout>
+          </h2>
           <figure>
-            <nemesis-frame headshot="{{ headshots[peers.baddies[0].username] }}"></nemesis-frame>
+            <nemesis-frame
+              headshot="{{ headshots[peers.baddies[0].username] }}"
+              class="card"
+            ></nemesis-frame>
             <figcaption>You avoided each other on {{ peers.baddies[0].value }} days.</figcaption>
           </figure>
         </section>

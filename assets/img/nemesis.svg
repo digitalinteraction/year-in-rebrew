@@ -8,7 +8,7 @@
       stroke:#010101;
       }
       .cup_shadow,.cup_rim, .cup_dark-shadow{
-      filter: brightness(0.3) saturate(0.3);
+      fill: #121111;
       stroke-width: 0;
       }
 
@@ -16,38 +16,34 @@
       fill:#fff;
       }
 
+      .cup-colour {
+      fill: #413934;
+      }
+
       .cup_medium-shadow {
-      filter: brightness(0.4) saturate(0.8);
+      fill: #191715;
       }
 
       .steam_highlight {
-      filter: brightness(4.5) saturate(1);
+      fill: #FFFFEA;
       }
 
       .steam_medium-shadow {
-      filter: brightness(2.5) saturate(0.7) hue-rotate(0.99turn);
+      fill: #9E8F87;
       }
 
       .steam_dark-shadow {
-      filter: brightness(1.3) saturate(0.7) hue-rotate(0.01turn);
+      fill: #514B46;
       }
 
       .steam_very-dark-shadow {
-      filter: brightness(0.4);
+      fill: #1A1715;
       }
 
       #cup-2 {
       transform-origin: center;
       }
-
-      #headshot {
-      border-radius: 50%;
-      }
     </style>
-
-    <clipPath id="headshotClip">
-      <rect id="rect" x="25%" y="25%" width="50%" height="50%" rx="15" />
-    </clipPath>
   </defs>
   <g id="Layer_2-2" fill="currentColor">
     <g id="cup" transform="translate(247.9,73)">

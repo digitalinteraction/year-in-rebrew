@@ -13,7 +13,7 @@
 }
 
 .pageHeader {
-  /* text-align: center; */
+  text-align: left;
 }
 .pageHeader h1 {
   font-size: min(max(1.5rem, 4vw), 48px);
@@ -70,12 +70,9 @@ canvas {
 
 cups-graph,
 beans-graph,
-hourly-graph {
+hourly-graph,
+nemesis-frame {
   display: block;
-  color: var(--color);
-  background-color: var(--highlight);
-  padding: var(--s-1);
-  border-radius: var(--s0);
 }
 
 .hint {
@@ -93,11 +90,6 @@ hourly-graph {
   border-radius: var(--s-2);
 }
 
-nemesis-frame {
-  display: block;
-  color: var(--color);
-}
-
 /* TODO: move to labcoat */
 figcaption {
   text-align: center;
@@ -107,6 +99,17 @@ figcaption {
   margin-block-start: 0.5em;
 }
 
-.text-align\:center {
+h2 {
   text-align: center;
+}
+
+cover-layout {
+  padding: 0 !important;
+}
+
+.card {
+  color: var(--color);
+  background-color: var(--highlight);
+  padding: var(--s-1);
+  border-radius: var(--s0);
 }
