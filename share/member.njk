@@ -88,31 +88,31 @@ costaCost: 3.2
             </icon-layout>
           </h2>
           <switcher-layout limit="5">
-            <div class="dayCard">
+            <div class="card dayStat">
               <header>MON</header>
               <span class="coolStat">
                 {{ member.cups | dailyAverage(1) | formatCups }}
               </span>
             </div>
-            <div class="dayCard">
+            <div class="card dayStat">
               <header>TUE</header>
               <span class="coolStat">
                 {{ member.cups | dailyAverage(2) | formatCups }}
               </span>
             </div>
-            <div class="dayCard">
+            <div class="card dayStat">
               <header>WED</header>
               <span class="coolStat">
                 {{ member.cups | dailyAverage(3) | formatCups }}
               </span>
             </div>
-            <div class="dayCard">
+            <div class="card dayStat">
               <header>THU</header>
               <span class="coolStat">
                 {{ member.cups | dailyAverage(4) | formatCups }}
               </span>
             </div>
-            <div class="dayCard">
+            <div class="card dayStat">
               <header>FRI</header>
               <span class="coolStat">
                 {{ member.cups | dailyAverage(5) | formatCups }}

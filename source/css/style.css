@@ -54,14 +54,11 @@
   font-size: 1.3em;
 }
 
-.dayCard {
+.dayStat {
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
-  background: var(--highlight);
-  padding: var(--s-1);
-  border-radius: var(--s0);
 }
 
 canvas {
