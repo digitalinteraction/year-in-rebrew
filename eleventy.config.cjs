@@ -43,6 +43,20 @@ function dailyAverage(records, dayOfWeek) {
     .reduce((sum, r) => sum + r.quantity, 0)
   return sum / daysIn2023[dayOfWeek]
 }
+function demember(value, key) {
+  const result = []
+  for (const member of Object.values(value)) result.push(...member[key])
+  return result
+}
+function activeMembers(users) {
+  const output = {}
+  for (const [key, value] of Object.entries(users)) {
+    if (value.cups.length > 0 || value.beans.length > 0) {
+      output[key] = value
+    }
+  }
+  return output
+}
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
@@ -65,11 +79,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('formatCost', (v) => formatCost(v))
   eleventyConfig.addFilter('dailyAverage', (v, d) => dailyAverage(v, d))
 
-  eleventyConfig.addFilter('demember', (v, key) => {
-    const result = []
-    for (const member of Object.values(v)) result.push(...member[key])
-    return result
-  })
+  eleventyConfig.addFilter('keys', (v) => Object.keys(v))
+  eleventyConfig.addFilter('map', (v, map) =>
+    v.map((i) => map[i]).filter((i) => i),
+  )
+
+  eleventyConfig.addFilter('demember', demember)
+  eleventyConfig.addFilter('activeMembers', activeMembers)
 
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')

@@ -8,6 +8,8 @@ sectionSpace: s0
 {% set totalBeans = (beancounter.users | demember('beans') | sumRecords) / 1000 %}
 {% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
 
+{% set headshots = beancounter.users | activeMembers | keys | map(headshots) %}
+
 {% macro latte2() %}
 <svg viewBox="0 0 19.66 71.78" style="transform: scale(1.5);">
   <use xlink:href="/assets/img/latte-art-2.svg#art"></use>
@@ -26,6 +28,16 @@ sectionSpace: s0
           <p>It's bean a year to remember!</p>
         </header>
       </cluster-layout>
+      
+      <cover-layout centered="center-layout" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <center-layout intrinsic>
+          <not-a-cult headshots="{{ headshots }}"></not-a-cult>
+        </center-layout>
+        <details class="hint">
+          <summary>info</summary>
+          <p>Coffee Club is not a cult.</p>
+        </details>
+      </cover-layout>
 
       <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="textStats flow">
@@ -48,15 +60,6 @@ sectionSpace: s0
             That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
           </p>
         </section>
-      </cover-layout>
-
-      <cover-layout centered="center-layout" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
-        <center-layout intrinsic>
-          <usage-planet
-            endpoint="./usage.json"
-            blend="true"
-          ></usage-planet>
-        </center-layout>
       </cover-layout>
 
       <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">

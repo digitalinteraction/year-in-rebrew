@@ -1,5 +1,6 @@
 const fs = require('node:fs/promises')
 const eleventyFetch = require('@11ty/eleventy-fetch')
+const sharp = require('sharp')
 const config = require('./config.json')
 const beancounter = require('./beancounter.json')
 
@@ -25,8 +26,18 @@ module.exports = async function () {
       continue
     }
 
-    const path = `/headshots/${username}.jpg`
-    await fs.writeFile(`_site${path}`, imageBuffer)
+    const rect = Buffer.from(
+      `<svg><rect x="0" y="0" width="256" height="256" rx="128" ry="128"/></svg>`,
+    )
+
+    const image = await sharp(imageBuffer)
+      .resize(256, 256)
+      .composite([{ input: rect, blend: 'dest-in' }])
+      .webp()
+      .toBuffer()
+
+    const path = `/headshots/${username}.webp`
+    await fs.writeFile(`_site${path}`, image)
     data[member.username] = path
   }
   return data

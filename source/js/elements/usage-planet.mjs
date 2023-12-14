@@ -1,4 +1,4 @@
-import { Application, Sprite, Texture, Graphics, BLEND_MODES } from 'pixi.js'
+import { Application, Sprite, Texture, BLEND_MODES } from 'pixi.js'
 import { watchColorScheme } from '../lib/dark-mode.mjs'
 
 const WIDTH = 640
@@ -43,7 +43,8 @@ export class Orbital {
   update(timeElapsed) {
     const t = timeElapsed * 0.0005 + this.tOffest * Math.PI * 2
 
-    this.sprite.zIndex = Math.cos(t) > 0 ? 1 : -1
+    // this.sprite.zIndex = Math.cos(t) > 0 ? 1 : -1
+    this.sprite.zIndex = Math.cos(t)
     this.sprite.position.x = WIDTH * 0.5 + this.xOffset + Math.sin(t) * this.r
     this.sprite.position.y =
       HEIGHT * 0.5 + this.yOffset + Math.cos(t) * this.r * 0.3333
@@ -54,7 +55,7 @@ export function random(min, max) {
   return min + Math.random() * Math.abs(max - min)
 }
 
-function pause(ms) {
+export function pause(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
@@ -63,12 +64,12 @@ function pause(ms) {
  * @param {Date} startOfYear
  * @param {Date} endOfYear
  */
-function percentThroughYear(input, startOfYear, endOfYear) {
+export function percentThroughYear(input, startOfYear, endOfYear) {
   const ms = input.getTime() - startOfYear.getTime()
   return ms / (endOfYear.getTime() - startOfYear.getTime())
 }
 
-function spread(input, value) {
+export function spread(input, value) {
   return input * value * 2 - value
 }
 
@@ -78,8 +79,6 @@ export class UsagePlanet extends HTMLElement {
     height: HEIGHT,
     backgroundAlpha: 0,
   })
-  imageMask = new Graphics()
-  colourMask = new Graphics()
   colorScheme = 'light'
 
   /** @type {Orbital[]} */ orbitals = []
@@ -132,11 +131,6 @@ export class UsagePlanet extends HTMLElement {
     const { cups, beans } = data
 
     const color = getComputedStyle(document.body).getPropertyValue('--color')
-    this.colourMask.beginFill(color)
-    this.colourMask.drawRect(0, 0, WIDTH, HEIGHT)
-
-    this.imageMask.beginFill(0x000000)
-    this.imageMask.drawEllipse(WIDTH / 2, HEIGHT / 2, 100, 100)
 
     if (!this.image && this.hasAttribute('image')) {
       const image = Sprite.from(this.getAttribute('image'))
@@ -147,7 +141,6 @@ export class UsagePlanet extends HTMLElement {
       image.width = 200
       image.height = 200
       image.zIndex = 0
-      image.mask = this.imageMask
       this.app.stage.addChild(image)
       this.image = image
     }
