@@ -1,4 +1,4 @@
-import { Application, Sprite, Texture, Graphics } from 'pixi.js'
+import { Application, Sprite, Texture, Graphics, BLEND_MODES } from 'pixi.js'
 import { watchColorScheme } from '../lib/dark-mode.mjs'
 
 const WIDTH = 640
@@ -199,6 +199,10 @@ export class UsagePlanet extends HTMLElement {
     sprite.height = 14.4
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
+    if (this.hasAttribute('blend')) {
+      sprite.alpha = 0.5
+      sprite.blendMode = BLEND_MODES.HUE
+    }
     this.app.stage.addChild(sprite)
     this.orbitals.push(
       new Orbital(
@@ -216,6 +220,10 @@ export class UsagePlanet extends HTMLElement {
     sprite.height = 46
     sprite.anchor.x = 0.5
     sprite.anchor.y = 0.5
+    if (this.hasAttribute('blend')) {
+      sprite.alpha = 0.8
+      sprite.blendMode = BLEND_MODES.HUE
+    }
     this.app.stage.addChild(sprite)
     this.orbitals.push(new Orbital(sprite, 0, 0, t, BEAN_RADIUS))
   }
