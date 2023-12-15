@@ -9,24 +9,25 @@ export class NemesisFrame extends HTMLElement {
   static svg = null
 
   static async getSvg() {
-    if (NemesisFrame.svg) return NemesisFrame.svg
+    if (this.svg) return this.svg
 
     const text = await fetch('/assets/img/nemesis.svg').then((r) => r.text())
 
-    NemesisFrame.svg = new DOMParser()
+    this.svg = new DOMParser()
       .parseFromString(text, 'image/svg+xml')
       .querySelector('svg')
 
-    if (!NemesisFrame.svg) {
+    if (!this.svg) {
       throw new Error('<nemesis-frame> Failed to load SVG')
     }
 
-    return NemesisFrame.svg
+    return this.svg
   }
 
   connectedCallback() {
     watchColorScheme(() => this.render())
   }
+
   async render() {
     if (!this.svg) {
       const template = await NemesisFrame.getSvg()

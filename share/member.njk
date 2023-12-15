@@ -175,10 +175,13 @@ sectionSpace: s0
               Comrade
             </icon-layout>
           </h2>
-          <p>
-            Your coffee comrade is ... <span class="coolStat">{{ peers.goodies[0].username }}</span>,
-            you shared <span class="coolStat">{{ peers.goodies[0].value }}</span> coffees together!
-          </p>
+          <figure>
+            <comrade-frame
+              first="{{ headshots[peers.goodies[0].username] }}"
+              second="{{ headshots[member.username] }}"
+            ></comrade-frame>
+            <figcaption>You shared a coffee {{ peers.goodies[0].value }} times.</figcaption>
+          </figure>
         </section>
         <details class="hint">
           <summary>info</summary>

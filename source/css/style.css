@@ -68,7 +68,8 @@ canvas {
 cups-graph,
 beans-graph,
 hourly-graph,
-nemesis-frame {
+nemesis-frame,
+comrade-frame {
   display: block;
 }
 

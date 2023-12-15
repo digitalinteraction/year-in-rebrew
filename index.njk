@@ -8,7 +8,7 @@ sectionSpace: s0
 {% set totalBeans = (beancounter.users | demember('beans') | sumRecords) / 1000 %}
 {% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
 
-{% set headshots = beancounter.users | activeMembers | keys | map(headshots) %}
+{% set members = beancounter.users | activeMembers | keys | map(headshots) %}
 
 {% macro latte2() %}
 <svg viewBox="0 0 19.66 71.78" style="transform: scale(1.5);">
@@ -31,7 +31,7 @@ sectionSpace: s0
       
       <cover-layout centered="center-layout" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <center-layout intrinsic>
-          <not-a-cult headshots="{{ headshots }}"></not-a-cult>
+          <not-a-cult headshots="{{ members }}"></not-a-cult>
         </center-layout>
         <details class="hint">
           <summary>info</summary>
@@ -97,7 +97,21 @@ sectionSpace: s0
           <beans-graph endpoint="./monthly-beans.json" class="card"></beans-graph>
         </section>
       </cover-layout>
-
+      
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Happy festivities!
+            </icon-layout>
+          </h2>
+          <comrade-frame
+            first="{{ headshots['rob-anderson'] }}"
+            second="{{ headshots['dan-jackson'] }}"
+          ></comrade-frame>
+        </section>
+      </cover-layout>
     </stack-layout>
   </center-layout>
 </main>
