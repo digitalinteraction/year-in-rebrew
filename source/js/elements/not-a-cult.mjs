@@ -1,4 +1,5 @@
 import { Application, Sprite, Texture } from 'pixi.js'
+import { DropShadowFilter } from '@pixi/filter-drop-shadow'
 import { Orbital } from './usage-planet.mjs'
 import { watchColorScheme } from '../lib/dark-mode.mjs'
 
@@ -6,7 +7,7 @@ const RADIUS = 280
 const ANIMATION_DURATION = 3_000
 
 const WIDTH = 640
-const HEIGHT = 300
+const HEIGHT = 320
 
 export class NotACult extends HTMLElement {
   app = new Application({
@@ -32,6 +33,8 @@ export class NotACult extends HTMLElement {
       this.render()
     })
     this.app.ticker.add((dt) => this.tick(dt))
+
+    console.log(this.app.renderer)
   }
 
   pause(ms) {
@@ -48,10 +51,17 @@ export class NotACult extends HTMLElement {
 
     const sprite = this.icon ?? new Sprite(texture)
     sprite.texture = texture
-    sprite.position.set(WIDTH / 2, HEIGHT / 2)
-    // sprite.width = texture.width
-    // sprite.height = texture.height
+    sprite.position.set(WIDTH / 2, HEIGHT / 2 - 40)
+    sprite.width = texture.width * 1.5
+    sprite.height = texture.height * 1.5
     sprite.anchor.set(0.5, 0.5)
+
+    // const shadow = new DropShadowFilter()
+    // shadow.color = 0x6760bf
+    // shadow.alpha = 0.5
+    // shadow.blur = 30
+    // shadow.distance = 0
+    // sprite.filters = [shadow]
 
     if (!this.icon) {
       this.icon = sprite
@@ -68,7 +78,7 @@ export class NotACult extends HTMLElement {
       sprite.width = 56
       sprite.height = 56
       this.app.stage.addChild(sprite)
-      this.orbitals.push(new Orbital(sprite, 0, 0, i / urls.length, RADIUS))
+      this.orbitals.push(new Orbital(sprite, 0, 30, i / urls.length, RADIUS))
     }
   }
 
