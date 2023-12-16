@@ -5,6 +5,12 @@ import { HourlyGraph } from './elements/hourly-graph.mjs'
 import { FunMetric } from './elements/fun-metric.mjs'
 import { ComradeFrame } from './elements/comrade-frame.mjs'
 
+function setCaptain(value) {
+  for (const elem of document.querySelectorAll('table.captains td')) {
+    elem.classList.toggle('current', elem.querySelector('img')?.alt === value)
+  }
+}
+
 async function main() {
   NotACult.define()
   CupsGraph.define()
@@ -12,6 +18,12 @@ async function main() {
   HourlyGraph.define()
   FunMetric.define()
   ComradeFrame.define()
+
+  for (const elem of document.querySelectorAll('table.captains td img')) {
+    elem.addEventListener('click', () => {
+      setCaptain(elem.alt ?? null)
+    })
+  }
 }
 
 main().catch((e) => console.error('Fatal', e))
