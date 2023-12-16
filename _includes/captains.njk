@@ -1,0 +1,29 @@
+<reel-layout >
+  <table class="captains">
+    <thead>
+      <tr>
+        <th></th>
+        {% for slot in captains.slots %}
+        <th>{{ slot }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in captains.table %}
+      <tr>
+        <th>{{ row.heading }}</th>
+        {% for day in row.values %}
+        {% set current = day and member and day.username == member.username %}
+        <td class="{{ 'current' if current }}">
+          {% if day %}
+          <img width="64" height="64" src="{{ headshots[day.username] }}" alt="{{ day.quantity }}">
+          {% else %}
+          ~
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</reel-layout>

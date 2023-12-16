@@ -1,8 +1,27 @@
-const fs = require('node:fs/promises')
-const eleventyFetch = require('@11ty/eleventy-fetch')
-const sharp = require('sharp')
-const config = require('./config.json')
 const beancounter = require('./beancounter.json')
+
+// const ranges = [
+//   {
+//     start: new Date('2023-12-11T07:00:00'),
+//     end: new Date('2023-12-11T19:00:00'),
+//   },
+//   {
+//     start: new Date('2023-12-12T07:00:00'),
+//     end: new Date('2023-12-12T19:00:00'),
+//   },
+//   {
+//     start: new Date('2023-12-13T07:00:00'),
+//     end: new Date('2023-12-13T19:00:00'),
+//   },
+//   {
+//     start: new Date('2023-12-14T07:00:00'),
+//     end: new Date('2023-12-14T19:00:00'),
+//   },
+//   {
+//     start: new Date('2023-12-15T07:00:00'),
+//     end: new Date('2023-12-15T19:00:00'),
+//   },
+// ]
 
 /** @param {Date} date */
 function getKey(date, bucketMins) {
@@ -37,9 +56,19 @@ function groupBy(input, predicate) {
   return record
 }
 
+const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+const timeFormat = new Intl.DateTimeFormat('en-GB', {
+  dateStyle: undefined,
+  timeStyle: 'short',
+})
+
 const BUCKET_MINS = 30
 
 module.exports = function () {
+  //
+  // Bucket all records per slot
+  //
   const daily = new Map()
   for (const member of Object.values(beancounter.users)) {
     const username = member.username
@@ -51,24 +80,54 @@ module.exports = function () {
       })
     }
   }
-  console.log('daily', daily)
 
-  const perMember = new Map()
+  //
+  // Work out the captain for each bucket
+  //
+  const captains = new Map()
   for (const [key, records] of daily) {
-    perMember.set(
-      key,
-      groupBy(records, (r) => r.username),
-    )
+    const [highest] = Object.entries(groupBy(records, (r) => r.username))
+      .map(([username, records]) => ({
+        username,
+        quantity: records.reduce((map, r) => map + r.quantity, 0),
+      }))
+      .sort((a, b) => b.quantity - a.quantity)
+
+    captains.set(key, highest)
   }
-  console.log('perMember', perMember)
+  console.log('perMember', captains)
 
-  // TODO: this doesn't work
+  // return Object.fromEntries(captains)
 
-  const totals = new Map()
-  for (const [key, members] of perMember) {
-    const [highest] = Object.values(members).sort((a, b) => a.length - b.length)
+  const dayBase = new Date('2023-12-11T00:00:00')
 
-    totals.set(key, highest)
+  const dayStart = getKey(new Date('2023-12-11T07:00:00'), BUCKET_MINS)
+  const dayEnd = getKey(new Date('2023-12-11T19:00:00'), BUCKET_MINS)
+  const daySlots = (24 * 60) / BUCKET_MINS
+
+  console.log({ dayStart, dayEnd, dayMins: daySlots })
+
+  const table = []
+  for (let dayOfWeek = 0; dayOfWeek < 5; dayOfWeek++) {
+    let values = []
+    for (let key = dayStart; key <= dayEnd; key++) {
+      values.push(captains.get(key + dayOfWeek * daySlots) ?? null)
+    }
+
+    table.push({ heading: daysOfWeek[dayOfWeek + 1], values })
   }
-  console.log('totals', totals)
+
+  const slots = []
+  for (let key = dayStart; key <= dayEnd; key++) {
+    const date = new Date(dayBase)
+    date.setMinutes(key * BUCKET_MINS)
+    console.log(key, date)
+    slots.push(timeFormat.format(date))
+  }
+
+  return {
+    raw: Object.fromEntries(captains),
+    table,
+    slots,
+  }
 }

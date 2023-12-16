@@ -111,3 +111,40 @@ cover-layout {
   padding: var(--s-1);
   border-radius: var(--s0);
 }
+
+table.captains {
+  display: block;
+  font-size: 1rem;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+table.captains thead th:not(:first-child) {
+  padding-block-end: var(--s0);
+}
+table.captains th:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--background);
+  padding-inline-end: var(--s0);
+}
+table.captains tbody td {
+  padding: var(--s-1) var(--s-2);
+  background: var(--highlight);
+  min-width: 42px;
+  text-align: center;
+}
+table.captains tbody td:nth-child(2) {
+  padding-inline-start: 1em;
+}
+table.captains tbody td:last-child {
+  padding-inline-end: 1em;
+}
+table.captains tbody tr:nth-child(1) td {
+  padding-block-start: 1em;
+}
+table.captains tbody tr:last-child td {
+  padding-block-end: 1em;
+}
+table.captains td.current {
+  background-color: var(--color);
+}

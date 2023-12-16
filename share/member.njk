@@ -50,6 +50,7 @@ sectionSpace: s0
       
       <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="textStats flow">
+          <p>Hello, brew-tiful! Let's take a look at your Coffee Club stats throughout the year.</p>
           {% if totalCups === 0 %}
           <p>You didn't drink any coffee this year.</p>
           {% else %}
@@ -180,7 +181,7 @@ sectionSpace: s0
               first="{{ headshots[peers.goodies[0].username] }}"
               second="{{ headshots[member.username] }}"
             ></comrade-frame>
-            <figcaption>You shared a coffee {{ peers.goodies[0].value }} times.</figcaption>
+            <figcaption>The perfect blend!. You shared a coffee {{ peers.goodies[0].value }} times.</figcaption>
           </figure>
         </section>
         <details class="hint">
@@ -212,6 +213,39 @@ sectionSpace: s0
         </details>
       </cover-layout>
       {% endif %}
+      
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              Coffee captains
+            </icon-layout>
+          </h2>
+          {% include 'captains.njk' %}
+        </section>
+        <details class="hint">
+          <summary>info</summary>
+          <p>These people are the most caffeinated for these hours. On average they have the most coffees at these times!</p>
+        </details>
+      </cover-layout>
+      
+      <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
+        <section class="flow">
+          <h2>
+            <icon-layout>
+              {{ latte2() }}
+              That's a wrap.
+            </icon-layout>
+          </h2>
+          <p> 
+            That's bean your Year in Rebrew! We hope it was interesting, you can also check out the
+            <a href="/">home page</a>
+            to see stats for the whole club.
+          </p>
+          <p>Keep it grounded and java nice day.</p>
+        </section>
+      </cover-layout>
 
       <pre id="data" aria-hidden="true"></pre>
     </stack-layout>
