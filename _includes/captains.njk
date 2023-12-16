@@ -16,7 +16,7 @@
         {% set current = day and member and day.username == member.username %}
         <td class="{{ 'current' if current }}">
           {% if day %}
-          <img width="64" height="64" src="{{ headshots[day.username] }}" alt="{{ day.quantity }}">
+          <img width="64" height="64" src="{{ headshots[day.username] }}" alt="{{ day.username }}">
           {% else %}
           ~
           {% endif %}
