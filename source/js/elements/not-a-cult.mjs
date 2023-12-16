@@ -25,16 +25,18 @@ export class NotACult extends HTMLElement {
     customElements.define('not-a-cult', this)
   }
 
-  connectedCallback() {
+  constructor() {
+    super()
     this.app.stage.sortableChildren = true
+    this.app.renderer.events.autoPreventDefault = false
+    this.app.view.style.touchAction = 'auto'
     this.appendChild(this.app.view)
+
     watchColorScheme((value) => {
       this.colorScheme = value
       this.render()
     })
     this.app.ticker.add((dt) => this.tick(dt))
-
-    console.log(this.app.renderer)
   }
 
   pause(ms) {

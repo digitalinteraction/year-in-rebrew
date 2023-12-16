@@ -78,6 +78,7 @@ export class UsagePlanet extends HTMLElement {
     width: WIDTH,
     height: HEIGHT,
     backgroundAlpha: 0,
+    eventMode: 'passive',
   })
   colorScheme = 'light'
 
@@ -89,18 +90,23 @@ export class UsagePlanet extends HTMLElement {
     customElements.define('usage-planet', this)
   }
 
-  async connectedCallback() {
+  constructor() {
+    super()
     this.app.stage.sortableChildren = true
+    this.app.renderer.events.autoPreventDefault = false
+    this.app.view.style.touchAction = 'auto'
     this.appendChild(this.app.view)
 
     watchColorScheme((scheme) => {
       this.colorScheme = scheme
     })
 
+    this.app.ticker.add((dt) => this.tick(dt))
+  }
+
+  async connectedCallback() {
     await this.loadTextures()
     await this.render()
-
-    this.app.ticker.add((dt) => this.tick(dt))
   }
 
   async loadTextures() {
