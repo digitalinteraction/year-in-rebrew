@@ -1,270 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Layer_1"
-  xmlns="http://www.w3.org/2000/svg" viewBox="-30 0 281.52 261.23">
-  <defs>
-    <style>
-      #machine-scene .cls-1,#machine-scene .cls-2,#machine-scene .cls-3,#machine-scene
-      .cls-4,#machine-scene .cls-5,#machine-scene .cls-6,#machine-scene .cls-7,#machine-scene
-      .cls-8,#machine-scene .cls-9,#machine-scene .cls-10,#machine-scene .cls-11,#machine-scene
-      .cls-12,#machine-scene .cls-13,#machine-scene .cls-14,#machine-scene .cls-15,#machine-scene
-      .cls-16,#machine-scene .cls-17,#machine-scene .cls-18,#machine-scene .cls-19,#machine-scene
-      .cls-20,#machine-scene .cls-21{
-      stroke-miterlimit:10;
+    xmlns="http://www.w3.org/2000/svg" viewBox="-40 0 291.52 271.23">
+    <defs>
+        <style>
+    :root {
+        --machine-colour: #4d4844;
+        --machine-shadow: #292626;
+        --machine-highlight: #fff;
+        --machine-cup-shadow: #191715;
+        --machine-cup-highlight: #fff;
+        --machine-cup-handle-highlight: #fff;
+        --machine-cup: #413934;
+        --machine-coffee: #c26f55;
+        --machine-coffee-shadow: #954d34;
+        --machine-trimming: #e5ddd8;
+        --machine-trimming-shadow: #9E8F87;
+        --machine-light: #fff;
+        --machine-light-highlight: #fff;
+        --machine-steam: #FFFFEA;
+        --machine-cup-line: #121111;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+          --machine-colour: #817872;
+          --machine-shadow: #514b46;
+          --machine-highlight: #fff;
+          --machine-cup-shadow: #bfb6b0;
+          --machine-cup-highlight: #fff;
+          --machine-cup-handle-highlight: #fff;
+          --machine-cup: #e2dbd6;
+          --machine-coffee: #c26f55;
+          --machine-coffee-shadow: #954d34;
+          --machine-trimming: #e5ddd8;
+          --machine-trimming-shadow: #9E8F87;
+          --machine-light: #fff;
+          --machine-light-highlight: #fff;
+          --machine-steam: #FFFFEA;
+          --machine-cup-line: #bfb6b0;
       }
-      #machine-scene .cls-1,#machine-scene .cls-2,#machine-scene .cls-4,#machine-scene
-      .cls-22,#machine-scene .cls-23,#machine-scene .cls-8,#machine-scene .cls-9,#machine-scene
-      .cls-11,#machine-scene .cls-13,#machine-scene .cls-14,#machine-scene .cls-15,#machine-scene
-      .cls-17,#machine-scene .cls-18,#machine-scene .cls-19,#machine-scene .cls-20,#machine-scene
-      .cls-21{
-      stroke-width:1.52px;
-      }
-      .machine_light-shadow,#machine-scene .machine_cup_shadow,#machine-scene .cls-7,#machine-scene
-      .cls-10,#machine-scene .cls-17,#machine-scene .cls-15{
-      fill:#babad5;
-      }
-      .machine_light-shadow,#machine-scene .machine_cup_shadow,#machine-scene
-      .machine_very-dark-shadow,#machine-scene .machine_steam,#machine-scene .avatar{
-      stroke-width:0px;
-      }
-      #machine-scene .machine_light-shadow,#machine-scene .machine_cup_shadow {}
-      #machine-scene .cls-2,#machine-scene .cls-22{
-      stroke:#010101;
-      }
-      #machine-scene .cls-2,#machine-scene .cls-22,#machine-scene .machine_very-dark-shadow{
-      fill:#010101;
-      }
-      #machine-scene .cls-3{
-      stroke-width:2.29px;
-      }
-      #machine-scene .cls-3,#machine-scene .cls-5,#machine-scene .cls-23,#machine-scene
-      .cls-11,#machine-scene .cls-12,#machine-scene .cls-16{
-      fill:none;
-      }
-      #machine-scene .cls-3,#machine-scene .cls-22,#machine-scene .cls-23,#machine-scene
-      .cls-11,#machine-scene .cls-16{
-      stroke-linecap:round;
-      }
-      #machine-scene .cls-3,#machine-scene .cls-23,#machine-scene .cls-9,#machine-scene
-      .cls-11,#machine-scene .cls-16{
-      stroke:#fff;
-      }
-      #machine-scene .cls-4,#machine-scene .cls-6,#machine-scene .cls-13{
-      fill:#dfdfec;
-      stroke:#dfdfec;
-      }
-      #machine-scene .cls-5{
-      stroke:#954d34;
-      stroke-width:3.05px;
-      }
-      #machine-scene .cls-6{
-      stroke-width:1.59px;
-      }
-      #machine-scene .cls-22,#machine-scene .cls-23{
-      stroke-linejoin:round;
-      }
-      #machine-scene .cls-7{
-      stroke-width:1.41px;
-      }
-      #machine-scene .cls-7,#machine-scene .cls-10,#machine-scene .cls-17,#machine-scene .cls-15{
-      stroke:#babad5;
-      }
-      #machine-scene .cls-8{
-      fill:#211e1e;
-      stroke:#211e1e;
-      }
-      #machine-scene .machine_steam,#machine-scene .avatar,#machine-scene .cls-9{
-      fill:#fff;
-      }
-      #machine-scene .cls-10{
-      stroke-width:1.45px;
-      }
-      #machine-scene .cls-12{
-      stroke:#c26f55;
-      stroke-width:7.62px;
-      }
-
-      #machine-scene .cls-16{
-      stroke-width:1.14px;
-      }
+    }
 
 
-      #machine-scene .cls-9 {
-      /* animation: 500ms infinite alternate blink; */
-      animation: machineBlink 1.5s step-start 0s infinite;
-      }
+#machine-scene .machine_shadow,#machine-scene .machine_cup_highlight,#machine-scene .machine_coffee_shadow,#machine-scene .machine_cup,#machine-scene .machine_colour,#machine-scene .machine_light,#machine-scene .machine_cup_shadow,#machine-scene .machine_cup_handle_highlight,#machine-scene .machine_coffee,#machine-scene .machine_trimming,#machine-scene .machine_trimming_shadow,#machine-scene .machine_light_highlight{
+    stroke-miterlimit:10;
+}
+#machine-scene .machine_shadow,#machine-scene .machine_trimming,#machine-scene .machine_highlight,#machine-scene .machine_colour,#machine-scene .machine_light,#machine-scene .machine_cup_handle_highlight,#machine-scene .machine_trimming_shadow{
+    stroke-width:1.52px;
+}
+#machine-scene .machine_trimming_shadow{
+    fill: var(--machine-trimming-shadow);
+}
 
-      @keyframes machineBlink {
-      0% { fill: darkred; stroke: darkred; }
-      50% { fill: #f14545; stroke: #f14545; }
-      100% { fill: darkred; stroke: darkred; }
-      }
+#machine-scene .machine_cup_shadow{
+    fill: var(--machine-cup-shadow);
+}
 
 
-    </style>
-  </defs>
-  <g id="machine-scene">
-    <g id="steam-right">
-      <path id="steam" class="cls-26 machine_steam"
-        d="M158.76,185.67c2.18-1.58,2.52-4.7,1.83-7.26-.69-2.56-2.2-4.84-3.09-7.34-1.6-4.48-1.08-9.63,1.37-13.73-.84,1.99-.33,4.29.61,6.23s2.28,3.68,3.21,5.63c2.89,6.08,1.01,13.97-3.93,16.45Z" />
-      <path id="steam-2" class="cls-26 machine_steam"
-        d="M168.88,177.62c.7-2.96.59-6.09-.3-9,2.45,1.99,3.3,5.45,2.66,8.5s-2.58,5.71-4.89,7.86c1.14-3.15,2.27-6.23,2.53-7.35Z" />
+.machine_trimming_shadow,#machine-scene .machine_cup_shadow,#machine-scene .machine_shadow,#machine-scene .machine_steam,#machine-scene .avatar{
+    stroke-width:0px;
+}
+#machine-scene .machine_shadow{
+    stroke: var(--machine-shadow);
+    fill: var(--machine-shadow);
+}
+#machine-scene .machine_cup_highlight{
+    stroke-width:2.29px;
+}
+#machine-scene .machine_cup_highlight,#machine-scene .machine_coffee_shadow,#machine-scene .machine_highlight,#machine-scene .machine_cup_handle_highlight,#machine-scene .machine_coffee,#machine-scene .machine_light_highlight{
+    fill:none;
+}
+#machine-scene .machine_cup_highlight,#machine-scene .machine_shadow,#machine-scene .machine_highlight,#machine-scene .machine_cup_handle_highlight,#machine-scene .machine_light_highlight{
+    stroke-linecap:round;
+}
+#machine-scene .machine_cup_highlight,#machine-scene .machine_highlight,#machine-scene .machine_light,#machine-scene .machine_cup_handle_highlight,#machine-scene .machine_light_highlight{
+    stroke: var(--machine-highlight);
+}
+
+#machine-scene .machine_trimming{
+    fill: var(--machine-trimming);
+    stroke: var(--machine-trimming);
+}
+#machine-scene .machine_cup{
+    fill: var(--machine-cup);
+    stroke: var(--machine-cup);
+}
+#machine-scene .machine_coffee_shadow{
+    stroke: var(--machine-coffee-shadow);
+    stroke-width:3.05px;
+}
+#machine-scene .machine_cup{
+    stroke-width:1.59px;
+}
+#machine-scene .machine_shadow,#machine-scene .machine_highlight{
+    stroke-linejoin:round;
+}
+#machine-scene .machine_trimming_shadow{
+    stroke-width:1.41px;
+}
+#machine-scene .machine_trimming_shadow{
+    stroke: var(--machine-trimming-shadow);
+}
+
+#machine-scene .machine_cup_shadow{
+    stroke: var(--machine-cup-shadow);
+}
+#machine-scene .machine_colour{
+    fill: var(--machine-colour);
+    stroke: var(--machine-colour);
+}
+#machine-scene .machine_steam,#machine-scene .avatar{
+    fill: var(--machine-steam);
+}
+
+#machine-scene .machine_light {
+    fill: var(--machine-light);
+}
+
+#machine-scene .machine_shadow-thick-stroke {
+    stroke-width: 1.59px;
+}
+
+#machine-scene .machine_cup_shadow{
+    stroke-width:1.45px;
+}
+
+#machine-scene .machine_cup_line {
+    stroke-width: 3px;
+    stroke-linecap:round;
+    stroke: var(--machine-cup-line);
+}
+
+#machine-scene .machine_coffee{
+    stroke: var(--machine-coffee);
+    stroke-width:7.62px;
+}
+
+#machine-scene .machine_light_highlight{
+    stroke-width:1.14px;
+}
+
+#machine-scene .machine_light {
+    /* animation: 500ms infinite alternate blink; */
+    animation: machineBlink 1.5s step-start 0s infinite;
+}
+
+#machine-scene .machine_coffee-stream {
+    animation: machineCoffeeStream 0.5s step-start 0s infinite;
+}
+
+@keyframes machineBlink {
+    0% { fill: darkred; stroke: darkred; }
+    50% { fill: #f14545; stroke: #f14545; }
+    100% { fill: darkred; stroke: darkred; }
+}
+
+@keyframes machineCoffeeStream {
+    0% { transform:translate(0, 0px); }
+    25% { transform:translate(0, -10px); }
+    50% { transform:translate(0, -20px); }
+    75% { transform:translate(0, -30px); }
+    100% { transform:translate(0, -40px); }
+}
+
+        </style>
+        <clipPath id="steam-cup-clip">
+            <rect x="60" y="145" width="200" height="100" />
+        </clipPath>
+    </defs>
+    <g id="machine-scene">
+        <g id="steam-right">
+            <path id="steam" class="machine_steam" d="M158.76,185.67c2.18-1.58,2.52-4.7,1.83-7.26-.69-2.56-2.2-4.84-3.09-7.34-1.6-4.48-1.08-9.63,1.37-13.73-.84,1.99-.33,4.29.61,6.23s2.28,3.68,3.21,5.63c2.89,6.08,1.01,13.97-3.93,16.45Z"/>
+            <path id="steam-2" class="machine_steam" d="M168.88,177.62c.7-2.96.59-6.09-.3-9,2.45,1.99,3.3,5.45,2.66,8.5s-2.58,5.71-4.89,7.86c1.14-3.15,2.27-6.23,2.53-7.35Z"/>
+        </g>
+        <g id="steam-left">
+            <path id="steam-3" class="machine_steam" d="M58.63,185.67c-2.18-1.58-2.52-4.7-1.83-7.26s2.2-4.84,3.09-7.34c1.6-4.48,1.08-9.63-1.37-13.73.84,1.99.33,4.29-.61,6.23s-2.28,3.68-3.21,5.63c-2.89,6.08-1.01,13.97,3.93,16.45Z"/>
+            <path id="steam-4" class="machine_steam" d="M48.51,177.62c-.7-2.96-.59-6.09.3-9-2.45,1.99-3.3,5.45-2.66,8.5s2.58,5.71,4.89,7.86c-1.14-3.15-2.27-6.23-2.53-7.35Z"/>
+        </g>
+        <path class="machine_shadow" d="M110.99,102.77c-.3,0-.63,0-.93.02-.3-.02-.63-.02-.93-.02-22.01,0-39.84,17.83-39.84,39.84,0,1.37.08,2.73.21,4.07,0,0,1.57,2.29,5.4,2.29,4.56,0,5.09-2.29,5.09-2.29,0-16.1,13.05-29.16,29.14-29.16.32,0,.63,0,.93.02.3-.02.61-.02.93-.02,16.1,0,29.14,13.06,29.14,29.16,0,0,.53,2.29,5.09,2.29,3.83,0,5.4-2.29,5.4-2.29.14-1.34.21-2.7.21-4.07,0-22.01-17.83-39.84-39.84-39.84Z"/>
+        <rect class="machine_trimming_shadow" x="174.84" y="88.69" width="19.82" height="7.33"/>
+        <rect class="machine_trimming" x="194.66" y="86.35" width="6.36" height="12.01"/>
+        <rect class="machine_trimming_shadow" x="194.66" y="95.59" width="6.36" height="2.77"/>
+        <path class="machine_colour" d="M210.28,86.03v12.65c0,1.07-.53,2-1.34,2.55-.18.12-.37.21-.56.27-.35.15-.73.23-1.14.23h-3.05c-.4,0-.79-.08-1.14-.21-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82.35-.15.75-.23,1.14-.23h3.05c.41,0,.79.08,1.14.21.21.08.4.18.58.3.79.55,1.33,1.48,1.33,2.53Z"/>
+        <path class="machine_colour" d="M250.75,92.42c.05.98,0,6.6-5.56,8.64-.49.17-1.02.32-1.6.44-6.91,1.39-12.24-.14-15.96-.53-2.59-.27-9.89-1.8-14.16-2.71-1.13-.24-2.04-.44-2.59-.56-.38-.09-.59-.14-.59-.14l.06-4.91v-.58l-.06-4.92s.21-.05.59-.12c.55-.12,1.46-.32,2.59-.56,4.27-.91,11.57-2.44,14.16-2.71,3.72-.41,9.05-1.92,15.96-.52,1.17.24,2.16.61,2.99,1.08,4.18,2.36,4.22,7.09,4.18,7.97v.14Z"/>
+        <g clip-path="url(#steam-cup-clip)" transform-origin="center" transform="scale(0.97, 1)">
+            <g class="machine_coffee-stream">
+                <path class="machine_coffee" d="M74.3,145.93c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09"/>
+                <path class="machine_coffee_shadow" d="M76.97,146.02c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09"/>
+                <path class="machine_coffee" style="transform-origin:center;transform:translate(0, 124px) scale(1, -1)" d="M74.3,145.93c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09"/>
+                <path class="machine_coffee_shadow" style="transform-origin:center;transform:translate(0, 124px) scale(1, -1)" d="M76.97,146.02c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09"/>
+            </g>
+        </g>
+        <g clip-path="url(#steam-cup-clip)" transform-origin="center" transform="scale(0.97, 1)">
+            <g class="machine_coffee-stream">
+                <path class="machine_coffee" d="M145.46,147.23c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09"/>
+                <path class="machine_coffee" style="transform-origin:center;transform:translate(0, 124px) scale(1, -1)" d="M145.46,147.23c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09"/>
+                <path class="machine_coffee_shadow" d="M148.08,145.97c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09"/>
+                <path class="machine_coffee_shadow" style="transform-origin:center;transform:translate(0, 124px) scale(1, -1)" d="M148.08,145.97c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09"/>
+            </g>
+        </g>
+        <path class="machine_shadow" d="M110.99,102.77c-.3,0-.63,0-.93.02-.3-.02-.63-.02-.93-.02-22.01,0-39.84,17.83-39.84,39.84,0,1.37.08,2.73.21,4.07,0,0,1.57,2.29,5.4,2.29,4.56,0,5.09-2.29,5.09-2.29,0-16.1,13.05-29.16,29.14-29.16.32,0,.63,0,.93.02.3-.02.61-.02.93-.02,16.1,0,29.14,13.06,29.14,29.16,0,0,.53,2.29,5.09,2.29,3.83,0,5.4-2.29,5.4-2.29.14-1.34.21-2.7.21-4.07,0-22.01-17.83-39.84-39.84-39.84Z"/>
+        <rect class="machine_trimming_shadow" x="174.84" y="88.69" width="19.82" height="7.33"/>
+        <rect class="machine_trimming" x="194.66" y="86.35" width="6.36" height="12.01"/>
+        <rect class="machine_trimming_shadow" x="194.66" y="95.59" width="6.36" height="2.77"/>
+        <path class="machine_colour" d="M210.28,86.03v12.65c0,1.07-.53,2-1.34,2.55-.18.12-.37.21-.56.27-.35.15-.73.23-1.14.23h-3.05c-.4,0-.79-.08-1.14-.21-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82.35-.15.75-.23,1.14-.23h3.05c.41,0,.79.08,1.14.21.21.08.4.18.58.3.79.55,1.33,1.48,1.33,2.53Z"/>
+        <path class="machine_colour" d="M250.75,92.42c.05.98,0,6.6-5.56,8.64-.49.17-1.02.32-1.6.44-6.91,1.39-12.24-.14-15.96-.53-2.59-.27-9.89-1.8-14.16-2.71-1.13-.24-2.04-.44-2.59-.56-.38-.09-.59-.14-.59-.14l.06-4.91v-.58l-.06-4.92s.21-.05.59-.12c.55-.12,1.46-.32,2.59-.56,4.27-.91,11.57-2.44,14.16-2.71,3.72-.41,9.05-1.92,15.96-.52,1.17.24,2.16.61,2.99,1.08,4.18,2.36,4.22,7.09,4.18,7.97v.14Z"/>
+        <path class="machine_shadow" d="M250.76,92.64c-.05,1.27-.49,6.18-5.11,7.81-2.53-6.19-2.33-11.97,1.23-15.53,3.56,2.07,3.93,6.41,3.88,7.73Z"/>
+        <path class="machine_highlight" d="M215.27,87.74c10.6-2.86,22.72-5.07,28.67-2.82"/>
+        <path class="machine_shadow machine_shadow-thick-stroke" d="M144.33,23.5h-68.53C81.3,10.41,94.1,1.14,109.11.78c.3-.02.63-.02.95-.02,15.41,0,28.64,9.37,34.27,22.74Z"/>
+        <path class="machine_colour" d="M131.7,23.5h-55.91C81.3,10.41,94.1,1.14,109.11.78c10.21,3.66,18.46,12.01,22.59,22.73Z"/>
+        <path class="machine_shadow" d="M144.36,102.77v1.33c0,2.53-2.04,4.57-4.57,4.57h-59.45c-2.52,0-4.57-2.04-4.57-4.57v-1.33h68.59Z"/>
+        <rect class="machine_colour" x="45.28" y="47.51" width="129.56" height="48.78"/>
+        <path class="machine_trimming" d="M174.84,97.81v.38c0,.82-.21,1.6-.59,2.26-.79,1.39-2.29,2.32-3.98,2.32H49.85c-1.71,0-3.2-.93-3.98-2.32-.38-.66-.59-1.43-.59-2.26v-.38h129.56Z"/>
+        <path class="machine_highlight" d="M100.65,3.54c-9.58,2.77-17.24,9.1-21.89,17.19"/>
+        <path class="machine_colour" d="M158.46,28.08v13.72H61.66v-13.72c0-2.52,2.04-4.57,4.57-4.57h87.65c2.52,0,4.57,2.06,4.57,4.57Z"/>
+        <path class="machine_shadow" d="M158.46,28.08v13.72h-14.86v-18.29h10.74c2.27,0,4.12,2.06,4.12,4.57Z"/>
+        <path class="machine_trimming" d="M158.46,28.08H61.66c0-2.52,2.04-4.57,4.57-4.57h87.65c2.52,0,4.57,2.06,4.57,4.57Z"/>
+        <path class="machine_trimming_shadow" d="M158.46,28.08h-14.86v-4.57h10.29c2.52,0,4.57,2.06,4.57,4.57Z"/>
+        <path class="machine_trimming" d="M174.84,46.37H45.28c0-2.52,2.04-4.57,4.57-4.57h120.42c2.52,0,4.57,2.06,4.57,4.57Z"/>
+        <path class="machine_trimming_shadow" d="M174.84,46.37h-14.86v-4.57h10.29c2.52,0,4.57,2.06,4.57,4.57Z"/>
+        <circle class="machine_light" cx="61.66" cy="56.16" r="1.52"/>
+        <path class="machine_light_highlight" d="M60.15,56.31s-.02-.09-.02-.15c0-.84.69-1.52,1.52-1.52"/>
+        <path class="machine_trimming_shadow" d="M174.25,100.92c-.79,1.39-2.29,2.32-3.98,2.32H49.85c-1.71,0-3.2-.93-3.98-2.32h128.38Z"/>
+        <path class="machine_shadow" d="M212.55,85.99l.08,12.8s-1.16-.41-1.45-.55v-11.79c.29-.13.77-.2,1.37-.47Z"/>
+        <rect class="machine_shadow" x="159.1" y="47.51" width="15.75" height="48.78"/>
+        <line class="machine_highlight" x1="63.19" y1="30.61" x2="63.19" y2="39.26"/>
+        <line class="machine_highlight" x1="46.8" y1="49.68" x2="46.8" y2="94.65"/>
+        <path class="machine_trimming_shadow" d="M174.84,97.81h-14.86v3.92h10.29c2.52,0,4.57-1.76,4.57-3.92Z"/>
+        <path class="machine_shadow" d="M202.43,83.21v18.31c-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82Z"/>
+        <path class="machine_highlight" d="M71.58,144.8c0-12.35,5.02-24.15,15.35-31.38"/>
+        <path class="machine_highlight" d="M141.26,137.77c.99,2.59,1.41,5.4,1.23,8.17"/>
+        <g id="cup-right">
+            <path class="machine_cup_shadow" d="M198.95,197.72v-.49h-.03v-.43c0-1.68-1.37-3.05-3.05-3.05h-10.3c.03,1.14.05,2.3.08,3.48h-61.58v.49c-.05,1.23-.09,2.52-.14,3.84-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h38.44c8.2-3.38,12.9-9.74,16.04-18.03,1.72-4.57,2.18-9.51,2.38-14.4.35-8.29.18-18.79-.11-27.1Z"/>
+            <path class="machine_cup_handle_highlight" d="M200.66,209.69c3.32-.4,6.76.28,9.67,1.93"/>
+            <path class="machine_cup_handle_highlight" d="M199.95,237.84c4.38.45,8.93-1.61,11.47-5.21"/>
+            <path class="machine_cup" d="M185.64,197.23c-.03-1.17-.05-2.33-.08-3.48h-58.59c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z"/>
+            <path class="machine_cup_highlight" d="M126.34,196.76c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5"/>
+            <rect class="machine_cup_shadow" x="142.2" y="252.44" width="38.45" height="8.79" rx="2" ry="2"/>
+            <path class="machine_cup_shadow" d="M198.95,197.72v-.49h-.03v-.43c0-1.68-1.37-3.05-3.05-3.05h-10.3c.03,1.14.05,2.3.08,3.48h-61.58v.49c-.05,1.23-.09,2.52-.14,3.84-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h38.44c8.2-3.38,12.9-9.74,16.04-18.03,1.72-4.57,2.18-9.51,2.38-14.4.35-8.29.18-18.79-.11-27.1Z"/>
+            <path class="machine_cup_shadow" d="M219.36,225.52c0,6.54-3.48,12.26-8.63,15.24-2.04,1.19-4.34,1.95-6.8,2.18-.5.05-1.02.08-1.54.08h-28.44v-7.16h28.44c.52,0,1.04-.05,1.54-.14,1.37-.21,2.65-.7,3.76-1.43,2.84-1.83,4.71-5.06,4.71-8.76,0-5.17-3.67-9.47-8.48-10.21-.5-.09-1.02-.14-1.54-.14h-28.44v-7.18h28.44c.52,0,1.04.03,1.54.08,8.66.79,15.43,8.31,15.43,17.45Z"/>
+            <path class="machine_cup_handle_highlight" d="M200.66,209.69c3.32-.4,6.76.28,9.67,1.93"/>
+            <path class="machine_cup_handle_highlight" d="M199.95,237.84c4.38.45,8.93-1.61,11.47-5.21"/>
+            <path class="machine_cup" d="M185.64,197.23c-.03-1.17-.05-2.33-.08-3.48h-58.59c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z"/>
+            <path class="machine_cup_highlight" d="M126.34,196.76c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5"/>
+            <circle class="avatar" id="avatar-right" cx="161.43" cy="225.56" r="19"/>
+            <image id="headshot-b" href="#" x="144.5" y="208.5" height="34px" width="34px"
+            clip-path="inset(0% round 50%)"></image>
+        </g>
+        <g id="cup-left">
+            <path class="machine_cup_handle_highlight" d="M18.28,209.41c-3.34-.15-6.72.79-9.49,2.65"/>
+            <path class="machine_cup_handle_highlight" d="M20.17,237.84c-4.38.45-8.93-1.61-11.47-5.21"/>
+            <path class="machine_cup_shadow" d="M96.19,201.26v-5.5c0-1.1-.9-2-2-2H23.2c-1.1,0-2,.9-2,2v1.47h-.03v.5c-.3,8.3-.46,18.8-.12,27.1.2,4.88.65,9.83,2.38,14.4,3.13,8.29,7.84,14.64,16.03,18.03h38.45c8.19-3.39,12.94-9.73,16.07-18.03,1.73-4.57,2.17-9.52,2.38-14.4.3-7.16.08-15.96-.18-23.57Z"/>
+            <path class="machine_cup" d="M82.9,197.23c-.03-1.17-.05-2.33-.08-3.48H24.23c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z"/>
+            <path class="machine_cup_highlight" d="M24.42,197.12c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5"/>
+            <path class="machine_cup" d="M.76,225.52c0,6.54,3.48,12.26,8.63,15.24,2.04,1.19,4.34,1.95,6.8,2.18.5.05,1.02.08,1.54.08h28.44v-7.16h-28.44c-.52,0-1.04-.05-1.54-.14-1.37-.21-2.65-.7-3.76-1.43-2.84-1.83-4.71-5.06-4.71-8.76,0-5.17,3.67-9.47,8.48-10.21.5-.09,1.02-.14,1.54-.14h28.44v-7.18h-28.44c-.52,0-1.04.03-1.54.08-8.66.79-15.43,8.31-15.43,17.45Z"/>
+            <path class="machine_cup_handle_highlight" d="M18.28,209.41c-3.34-.15-6.72.79-9.49,2.65"/>
+            <path class="machine_cup_handle_highlight" d="M20.17,237.84c-4.38.45-8.93-1.61-11.47-5.21"/>
+            <rect class="machine_cup_shadow" x="39.47" y="252.44" width="38.45" height="8.79" rx="2" ry="2"/>
+            <path class="machine_cup_shadow" d="M96.19,201.26v-5.5c0-1.1-.9-2-2-2H23.2c-1.1,0-2,.9-2,2v1.47h-.03v.5c-.3,8.3-.46,18.8-.12,27.1.2,4.88.65,9.83,2.38,14.4,3.13,8.29,7.84,14.64,16.03,18.03h38.45c8.19-3.39,12.94-9.73,16.07-18.03,1.73-4.57,2.17-9.52,2.38-14.4.3-7.16.08-15.96-.18-23.57Z"/>
+            <path class="machine_cup" d="M82.9,197.23c-.03-1.17-.05-2.33-.08-3.48H24.23c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z"/>
+            <path class="machine_cup_highlight" d="M24.42,197.12c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5"/>
+            <circle class="avatar" id="avatar-left" cx="58.69" cy="225.92" r="19"/>
+            <image id="headshot-a" href="#" x="41.5" y="209" height="34px" width="34px"
+            clip-path="inset(0% round 50%)"></image>
+        </g>
+        <line class="machine_cup_line" x1="3" y1="261" x2="218" y2="261"/>
     </g>
-    <g id="steam-left">
-      <path id="steam-3" class="cls-26 machine_steam"
-        d="M58.63,185.67c-2.18-1.58-2.52-4.7-1.83-7.26s2.2-4.84,3.09-7.34c1.6-4.48,1.08-9.63-1.37-13.73.84,1.99.33,4.29-.61,6.23s-2.28,3.68-3.21,5.63c-2.89,6.08-1.01,13.97,3.93,16.45Z" />
-      <path id="steam-4" class="cls-26 machine_steam"
-        d="M48.51,177.62c-.7-2.96-.59-6.09.3-9-2.45,1.99-3.3,5.45-2.66,8.5s2.58,5.71,4.89,7.86c-1.14-3.15-2.27-6.23-2.53-7.35Z" />
-    </g>
-    <path id="coffee" class="cls-12"
-      d="M74.3,145.93c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09" />
-    <path id="coffee_shadow" class="cls-5"
-      d="M76.97,146.02c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09" />
-    <path id="coffee-2" class="cls-12"
-      d="M145.46,147.23c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09" />
-    <path id="coffee_shadow-2" class="cls-5"
-      d="M148.08,145.97c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09" />
-    <path class="machine_very-dark-shadow"
-      d="M110.99,102.77c-.3,0-.63,0-.93.02-.3-.02-.63-.02-.93-.02-22.01,0-39.84,17.83-39.84,39.84,0,1.37.08,2.73.21,4.07,0,0,1.57,2.29,5.4,2.29,4.56,0,5.09-2.29,5.09-2.29,0-16.1,13.05-29.16,29.14-29.16.32,0,.63,0,.93.02.3-.02.61-.02.93-.02,16.1,0,29.14,13.06,29.14,29.16,0,0,.53,2.29,5.09,2.29,3.83,0,5.4-2.29,5.4-2.29.14-1.34.21-2.7.21-4.07,0-22.01-17.83-39.84-39.84-39.84Z" />
-    <rect class="cls-17" x="174.84" y="88.69" width="19.82" height="7.33" />
-    <rect class="cls-4" x="194.66" y="86.35" width="6.36" height="12.01" />
-    <rect class="cls-17" x="194.66" y="95.59" width="6.36" height="2.77" />
-    <path class="cls-8"
-      d="M210.28,86.03v12.65c0,1.07-.53,2-1.34,2.55-.18.12-.37.21-.56.27-.35.15-.73.23-1.14.23h-3.05c-.4,0-.79-.08-1.14-.21-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82.35-.15.75-.23,1.14-.23h3.05c.41,0,.79.08,1.14.21.21.08.4.18.58.3.79.55,1.33,1.48,1.33,2.53Z" />
-    <path class="cls-8"
-      d="M250.75,92.42c.05.98,0,6.6-5.56,8.64-.49.17-1.02.32-1.6.44-6.91,1.39-12.24-.14-15.96-.53-2.59-.27-9.89-1.8-14.16-2.71-1.13-.24-2.04-.44-2.59-.56-.38-.09-.59-.14-.59-.14l.06-4.91v-.58l-.06-4.92s.21-.05.59-.12c.55-.12,1.46-.32,2.59-.56,4.27-.91,11.57-2.44,14.16-2.71,3.72-.41,9.05-1.92,15.96-.52,1.17.24,2.16.61,2.99,1.08,4.18,2.36,4.22,7.09,4.18,7.97v.14Z" />
-    <path class="machine_very-dark-shadow"
-      d="M250.76,92.64c-.05,1.27-.49,6.18-5.11,7.81-2.53-6.19-2.33-11.97,1.23-15.53,3.56,2.07,3.93,6.41,3.88,7.73Z" />
-    <path class="cls-23" d="M215.27,87.74c10.6-2.86,22.72-5.07,28.67-2.82" />
-    <path class="cls-2"
-      d="M144.33,23.5h-68.53C81.3,10.41,94.1,1.14,109.11.78c.3-.02.63-.02.95-.02,15.41,0,28.64,9.37,34.27,22.74Z" />
-    <path class="cls-8"
-      d="M131.7,23.5h-55.91C81.3,10.41,94.1,1.14,109.11.78c10.21,3.66,18.46,12.01,22.59,22.73Z" />
-    <path class="cls-2"
-      d="M144.36,102.77v1.33c0,2.53-2.04,4.57-4.57,4.57h-59.45c-2.52,0-4.57-2.04-4.57-4.57v-1.33h68.59Z" />
-    <rect class="cls-8" x="45.28" y="47.51" width="129.56" height="48.78" />
-    <path class="cls-4"
-      d="M174.84,97.81v.38c0,.82-.21,1.6-.59,2.26-.79,1.39-2.29,2.32-3.98,2.32H49.85c-1.71,0-3.2-.93-3.98-2.32-.38-.66-.59-1.43-.59-2.26v-.38h129.56Z" />
-    <path class="cls-23" d="M100.65,3.54c-9.58,2.77-17.24,9.1-21.89,17.19" />
-    <path class="cls-8"
-      d="M158.46,28.08v13.72H61.66v-13.72c0-2.52,2.04-4.57,4.57-4.57h87.65c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <path class="cls-22" d="M158.46,28.08v13.72h-14.86v-18.29h10.74c2.27,0,4.12,2.06,4.12,4.57Z" />
-    <path class="cls-16" d="M60.15,56.31s-.02-.09-.02-.15c0-.84.69-1.52,1.52-1.52" />
-    <path class="machine_very-dark-shadow"
-      d="M212.55,85.99l.08,12.8s-1.16-.41-1.45-.55v-11.79c.29-.13.77-.2,1.37-.47Z" />
-    <rect class="machine_very-dark-shadow" x="159.1" y="47.51" width="15.75" height="48.78" />
-    <line class="cls-23" x1="63.19" y1="30.61" x2="63.19" y2="39.26" />
-    <line class="cls-23" x1="46.8" y1="49.68" x2="46.8" y2="94.65" />
-    <path class="cls-7" d="M174.84,97.81h-14.86v3.92h10.29c2.52,0,4.57-1.76,4.57-3.92Z" />
-    <path class="machine_very-dark-shadow"
-      d="M202.43,83.21v18.31c-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82Z" />
-    <path class="cls-23" d="M71.58,144.8c0-12.35,5.02-24.15,15.35-31.38" />
-    <path class="cls-23" d="M141.26,137.77c.99,2.59,1.41,5.4,1.23,8.17" />
-    <path class="cls-12"
-      d="M74.3,145.93c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09" />
-    <path class="cls-5"
-      d="M76.97,146.02c1.17,4.42-.84,9.01-1.07,13.58-.22,4.19,1.06,8.38.55,12.55-.25,2.09-.95,4.11-1.16,6.2-.38,3.92.99,7.78,1.28,11.7.14,1.84.03,3.7-.31,5.51-.26,1.37-.63,2.89.09,4.09" />
-    <path class="cls-12"
-      d="M145.46,147.23c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09" />
-    <path class="cls-5"
-      d="M148.08,145.97c-1.17,4.42.84,9.01,1.07,13.58.22,4.19-1.06,8.38-.55,12.55.25,2.09.95,4.11,1.16,6.2.38,3.92-.99,7.78-1.28,11.7-.14,1.84-.03,3.7.31,5.51.26,1.37.63,2.89-.09,4.09" />
-    <path class="machine_very-dark-shadow"
-      d="M110.99,102.77c-.3,0-.63,0-.93.02-.3-.02-.63-.02-.93-.02-22.01,0-39.84,17.83-39.84,39.84,0,1.37.08,2.73.21,4.07,0,0,1.57,2.29,5.4,2.29,4.56,0,5.09-2.29,5.09-2.29,0-16.1,13.05-29.16,29.14-29.16.32,0,.63,0,.93.02.3-.02.61-.02.93-.02,16.1,0,29.14,13.06,29.14,29.16,0,0,.53,2.29,5.09,2.29,3.83,0,5.4-2.29,5.4-2.29.14-1.34.21-2.7.21-4.07,0-22.01-17.83-39.84-39.84-39.84Z" />
-    <rect class="cls-17" x="174.84" y="88.69" width="19.82" height="7.33" />
-    <rect class="cls-4" x="194.66" y="86.35" width="6.36" height="12.01" />
-    <rect class="cls-17" x="194.66" y="95.59" width="6.36" height="2.77" />
-    <path class="cls-8"
-      d="M210.28,86.03v12.65c0,1.07-.53,2-1.34,2.55-.18.12-.37.21-.56.27-.35.15-.73.23-1.14.23h-3.05c-.4,0-.79-.08-1.14-.21-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82.35-.15.75-.23,1.14-.23h3.05c.41,0,.79.08,1.14.21.21.08.4.18.58.3.79.55,1.33,1.48,1.33,2.53Z" />
-    <path class="cls-8"
-      d="M250.75,92.42c.05.98,0,6.6-5.56,8.64-.49.17-1.02.32-1.6.44-6.91,1.39-12.24-.14-15.96-.53-2.59-.27-9.89-1.8-14.16-2.71-1.13-.24-2.04-.44-2.59-.56-.38-.09-.59-.14-.59-.14l.06-4.91v-.58l-.06-4.92s.21-.05.59-.12c.55-.12,1.46-.32,2.59-.56,4.27-.91,11.57-2.44,14.16-2.71,3.72-.41,9.05-1.92,15.96-.52,1.17.24,2.16.61,2.99,1.08,4.18,2.36,4.22,7.09,4.18,7.97v.14Z" />
-    <path class="machine_very-dark-shadow"
-      d="M250.76,92.64c-.05,1.27-.49,6.18-5.11,7.81-2.53-6.19-2.33-11.97,1.23-15.53,3.56,2.07,3.93,6.41,3.88,7.73Z" />
-    <path class="cls-23" d="M215.27,87.74c10.6-2.86,22.72-5.07,28.67-2.82" />
-    <path class="cls-2"
-      d="M144.33,23.5h-68.53C81.3,10.41,94.1,1.14,109.11.78c.3-.02.63-.02.95-.02,15.41,0,28.64,9.37,34.27,22.74Z" />
-    <path class="cls-8"
-      d="M131.7,23.5h-55.91C81.3,10.41,94.1,1.14,109.11.78c10.21,3.66,18.46,12.01,22.59,22.73Z" />
-    <path class="cls-2"
-      d="M144.36,102.77v1.33c0,2.53-2.04,4.57-4.57,4.57h-59.45c-2.52,0-4.57-2.04-4.57-4.57v-1.33h68.59Z" />
-    <rect class="cls-8" x="45.28" y="47.51" width="129.56" height="48.78" />
-    <path class="cls-4"
-      d="M174.84,97.81v.38c0,.82-.21,1.6-.59,2.26-.79,1.39-2.29,2.32-3.98,2.32H49.85c-1.71,0-3.2-.93-3.98-2.32-.38-.66-.59-1.43-.59-2.26v-.38h129.56Z" />
-    <path class="cls-23" d="M100.65,3.54c-9.58,2.77-17.24,9.1-21.89,17.19" />
-    <path class="cls-8"
-      d="M158.46,28.08v13.72H61.66v-13.72c0-2.52,2.04-4.57,4.57-4.57h87.65c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <path class="cls-22" d="M158.46,28.08v13.72h-14.86v-18.29h10.74c2.27,0,4.12,2.06,4.12,4.57Z" />
-    <path class="cls-13"
-      d="M158.46,28.08H61.66c0-2.52,2.04-4.57,4.57-4.57h87.65c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <path class="cls-15" d="M158.46,28.08h-14.86v-4.57h10.29c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <path class="cls-13"
-      d="M174.84,46.37H45.28c0-2.52,2.04-4.57,4.57-4.57h120.42c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <path class="cls-15" d="M174.84,46.37h-14.86v-4.57h10.29c2.52,0,4.57,2.06,4.57,4.57Z" />
-    <circle class="cls-9" cx="61.66" cy="56.16" r="1.52" />
-    <path class="cls-16" d="M60.15,56.31s-.02-.09-.02-.15c0-.84.69-1.52,1.52-1.52" />
-    <path class="machine_light-shadow"
-      d="M174.25,100.92c-.79,1.39-2.29,2.32-3.98,2.32H49.85c-1.71,0-3.2-.93-3.98-2.32h128.38Z" />
-    <path class="machine_very-dark-shadow"
-      d="M212.55,85.99l.08,12.8s-1.16-.41-1.45-.55v-11.79c.29-.13.77-.2,1.37-.47Z" />
-    <rect class="machine_very-dark-shadow" x="159.1" y="47.51" width="15.75" height="48.78" />
-    <line class="cls-23" x1="63.19" y1="30.61" x2="63.19" y2="39.26" />
-    <line class="cls-23" x1="46.8" y1="49.68" x2="46.8" y2="94.65" />
-    <path class="cls-7" d="M174.84,97.81h-14.86v3.92h10.29c2.52,0,4.57-1.76,4.57-3.92Z" />
-    <path class="machine_very-dark-shadow"
-      d="M202.43,83.21v18.31c-1.11-.46-1.91-1.55-1.91-2.84v-12.65c0-1.28.79-2.38,1.91-2.82Z" />
-    <path class="cls-23" d="M71.58,144.8c0-12.35,5.02-24.15,15.35-31.38" />
-    <path class="cls-23" d="M141.26,137.77c.99,2.59,1.41,5.4,1.23,8.17" />
-    <g id="cup-right">
-      <path class="cls-10"
-        d="M198.95,197.72v-.49h-.03v-.43c0-1.68-1.37-3.05-3.05-3.05h-10.3c.03,1.14.05,2.3.08,3.48h-61.58v.49c-.05,1.23-.09,2.52-.14,3.84-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h38.44c8.2-3.38,12.9-9.74,16.04-18.03,1.72-4.57,2.18-9.51,2.38-14.4.35-8.29.18-18.79-.11-27.1Z" />
-      <path class="cls-17"
-        d="M219.36,225.52c0,6.54-3.48,12.26-8.63,15.24-2.04,1.19-4.34,1.95-6.8,2.18-.5.05-1.02.08-1.54.08h-28.44v-7.16h28.44c.52,0,1.04-.05,1.54-.14,1.37-.21,2.65-.7,3.76-1.43,2.84-1.83,4.71-5.06,4.71-8.76,0-5.17-3.67-9.47-8.48-10.21-.5-.09-1.02-.14-1.54-.14h-28.44v-7.18h28.44c.52,0,1.04.03,1.54.08,8.66.79,15.43,8.31,15.43,17.45Z" />
-      <path class="cls-11" d="M200.66,209.69c3.32-.4,6.76.28,9.67,1.93" />
-      <path class="cls-11" d="M199.95,237.84c4.38.45,8.93-1.61,11.47-5.21" />
-      <path class="cls-6"
-        d="M185.64,197.23c-.03-1.17-.05-2.33-.08-3.48h-58.59c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z" />
-      <path class="cls-3"
-        d="M126.34,196.76c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5" />
-      <rect class="machine_cup_shadow" x="142.2" y="252.44" width="38.45" height="8.79" rx="2"
-        ry="2" />
-      <path class="cls-10"
-        d="M198.95,197.72v-.49h-.03v-.43c0-1.68-1.37-3.05-3.05-3.05h-10.3c.03,1.14.05,2.3.08,3.48h-61.58v.49c-.05,1.23-.09,2.52-.14,3.84-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h38.44c8.2-3.38,12.9-9.74,16.04-18.03,1.72-4.57,2.18-9.51,2.38-14.4.35-8.29.18-18.79-.11-27.1Z" />
-      <path class="cls-17"
-        d="M219.36,225.52c0,6.54-3.48,12.26-8.63,15.24-2.04,1.19-4.34,1.95-6.8,2.18-.5.05-1.02.08-1.54.08h-28.44v-7.16h28.44c.52,0,1.04-.05,1.54-.14,1.37-.21,2.65-.7,3.76-1.43,2.84-1.83,4.71-5.06,4.71-8.76,0-5.17-3.67-9.47-8.48-10.21-.5-.09-1.02-.14-1.54-.14h-28.44v-7.18h28.44c.52,0,1.04.03,1.54.08,8.66.79,15.43,8.31,15.43,17.45Z" />
-      <path class="cls-11" d="M200.66,209.69c3.32-.4,6.76.28,9.67,1.93" />
-      <path class="cls-11" d="M199.95,237.84c4.38.45,8.93-1.61,11.47-5.21" />
-      <path class="cls-6"
-        d="M185.64,197.23c-.03-1.17-.05-2.33-.08-3.48h-58.59c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z" />
-      <path class="cls-3"
-        d="M126.34,196.76c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5" />
-      <circle class="cls-26 avatar" id="avatar-right" cx="161.43" cy="225.56" r="19" />
-      <image id="headshot-b" href="#" x="144.5" y="208.5" height="34px" width="34px"
-        clip-path="inset(0% round 50%)"></image>
-    </g>
-    <g id="cup-left">
-      <path class="cls-4"
-        d="M.76,225.52c0,6.54,3.48,12.26,8.63,15.24,2.04,1.19,4.34,1.95,6.8,2.18.5.05,1.02.08,1.54.08h28.44v-7.16h-28.44c-.52,0-1.04-.05-1.54-.14-1.37-.21-2.65-.7-3.76-1.43-2.84-1.83-4.71-5.06-4.71-8.76,0-5.17,3.67-9.47,8.48-10.21.5-.09,1.02-.14,1.54-.14h28.44v-7.18h-28.44c-.52,0-1.04.03-1.54.08-8.66.79-15.43,8.31-15.43,17.45Z" />
-      <path class="cls-11" d="M18.28,209.41c-3.34-.15-6.72.79-9.49,2.65" />
-      <path class="cls-11" d="M20.17,237.84c-4.38.45-8.93-1.61-11.47-5.21" />
-      <path class="cls-10"
-        d="M96.19,201.26v-5.5c0-1.1-.9-2-2-2H23.2c-1.1,0-2,.9-2,2v1.47h-.03v.5c-.3,8.3-.46,18.8-.12,27.1.2,4.88.65,9.83,2.38,14.4,3.13,8.29,7.84,14.64,16.03,18.03h38.45c8.19-3.39,12.94-9.73,16.07-18.03,1.73-4.57,2.17-9.52,2.38-14.4.3-7.16.08-15.96-.18-23.57Z" />
-      <path class="cls-6"
-        d="M82.9,197.23c-.03-1.17-.05-2.33-.08-3.48H24.23c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z" />
-      <path class="cls-3"
-        d="M24.42,197.12c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5" />
-      <path class="cls-4"
-        d="M.76,225.52c0,6.54,3.48,12.26,8.63,15.24,2.04,1.19,4.34,1.95,6.8,2.18.5.05,1.02.08,1.54.08h28.44v-7.16h-28.44c-.52,0-1.04-.05-1.54-.14-1.37-.21-2.65-.7-3.76-1.43-2.84-1.83-4.71-5.06-4.71-8.76,0-5.17,3.67-9.47,8.48-10.21.5-.09,1.02-.14,1.54-.14h28.44v-7.18h-28.44c-.52,0-1.04.03-1.54.08-8.66.79-15.43,8.31-15.43,17.45Z" />
-      <path class="cls-11" d="M18.28,209.41c-3.34-.15-6.72.79-9.49,2.65" />
-      <path class="cls-11" d="M20.17,237.84c-4.38.45-8.93-1.61-11.47-5.21" />
-      <rect class="machine_cup_shadow" x="39.47" y="252.44" width="38.45" height="8.79" rx="2"
-        ry="2" />
-      <path class="cls-10"
-        d="M96.19,201.26v-5.5c0-1.1-.9-2-2-2H23.2c-1.1,0-2,.9-2,2v1.47h-.03v.5c-.3,8.3-.46,18.8-.12,27.1.2,4.88.65,9.83,2.38,14.4,3.13,8.29,7.84,14.64,16.03,18.03h38.45c8.19-3.39,12.94-9.73,16.07-18.03,1.73-4.57,2.17-9.52,2.38-14.4.3-7.16.08-15.96-.18-23.57Z" />
-      <path class="cls-6"
-        d="M82.9,197.23c-.03-1.17-.05-2.33-.08-3.48H24.23c-1.43,0-2.65,1.01-2.96,2.35-.06.23-.09.46-.09.7v4.76c-.26,7.55-.47,16.2-.18,23.26.21,4.89.66,9.83,2.39,14.4,3.12,8.29,7.88,14.65,16.07,18.03h24.88c8.2-4.09,12.9-11.74,16.04-21.75,1.72-5.5,2.18-11.48,2.38-17.36.12-3.6.18-7.55.2-11.58,0-3.08-.02-6.23-.05-9.33Z" />
-      <path class="cls-3"
-        d="M24.42,197.12c0,10.88-.4,27.49-.06,30.98.99,10.25,5.39,21.15,14.19,26.5" />
-      <circle class="cls-26 avatar" id="avatar-left" cx="58.69" cy="225.92" r="19" />
-      <image id="headshot-a" href="#" x="41.5" y="209" height="34px" width="34px"
-        clip-path="inset(0% round 50%)"></image>
-    </g>
-  </g>
 </svg>
