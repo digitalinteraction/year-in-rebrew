@@ -162,8 +162,30 @@ function getMinMax(record, targets) {
 
 module.exports = {
   eleventyComputed: {
-    peers: (data) => {
+    peers(data) {
       return findPeers(data.member)
+    },
+    totalCups(data) {
+      return data.member.cups.reduce((sum, record) => sum + record.quantity, 0)
+    },
+    totalBeans(data) {
+      return (
+        data.member.beans.reduce((sum, record) => sum + record.quantity, 0) /
+        1000
+      )
+    },
+    metaTitle(data) {
+      return this.unslug(data.member.username) + `'s Year in Rebrew`
+    },
+    metaDescription(data) {
+      return [
+        this.unslug(data.member.username),
+        'drank',
+        this.formatCups(data.totalCups),
+        'of coffee, bought',
+        this.formatBeans(data.totalBeans),
+        'of beans and more…',
+      ].join(' ')
     },
   },
 }

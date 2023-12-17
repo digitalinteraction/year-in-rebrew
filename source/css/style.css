@@ -155,3 +155,6 @@ footer {
   padding: var(--s4) var(--s0) var(--s3);
   opacity: 0.8;
 }
+footer a {
+  font-weight: bold;
+}

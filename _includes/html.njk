@@ -11,6 +11,11 @@
       webc:keep
     />
     <link rel="stylesheet" href="/css/style.css" />
+    <meta property="og:title" content="{{ metaTitle or site.title }}" />
+    <meta property="og:description" content="{{ metaDescription or 'It\'s bean a year to remember' }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://2023-rebrew.openlab.dev{{ page.url }}" />
+    <meta property="og:image" content="https://2023-rebrew.openlab.dev/assets/img/opengraph.png" />
   </head>
   <body>
     {{ content | safe }}

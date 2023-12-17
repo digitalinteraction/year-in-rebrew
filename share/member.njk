@@ -11,8 +11,6 @@ sectionHeight: 50vh
 sectionSpace: s0
 ---
 
-{% set totalCups = member.cups | sumRecords %}
-{% set totalBeans = (member.beans | sumRecords) / 1000 %}
 {% set totalBags = member.beans.length %}
 {% set costPerCup = totalBeans * config.pricePerKilogram / totalCups %}
 
@@ -44,7 +42,7 @@ sectionSpace: s0
         </center-layout>
         <details class="hint">
           <summary>info</summary>
-          <p>This is each of your coffees drank and beans bought through the year. They orbit through time from January to December, so you might spot some habbits. Cups are arranged vertically so you can see how far through the day each cup is.</p>
+          <p>This is each of your coffees drank and beans bought through the year. They orbit through time from January to December, so you might spot some habits. Cups are arranged vertically so you can see how far through the day each cup is.</p>
         </details>
       </cover-layout>
       
@@ -88,7 +86,7 @@ sectionSpace: s0
           <h2>
             <icon-layout>
               {{ latte2() }}
-              Coffees habbits
+              Coffees habits
             </icon-layout>
           </h2>
           <switcher-layout limit="5">
