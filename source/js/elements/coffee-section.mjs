@@ -10,6 +10,8 @@ coffee-section {
   
   color: var(--background);
   background-color: var(--color);
+  
+  margin-top: calc(5em + var(--s4));
 }
 @media (prefers-color-scheme: dark) {
   coffee-section {
@@ -26,7 +28,7 @@ coffee-section svg {
   left: 0;
   right: 0;
   top: -5em;
-  height: 5em;
+  height: calc(5em + 1px);
   overflow: hidden;
   margin: 0 !important;
 }
