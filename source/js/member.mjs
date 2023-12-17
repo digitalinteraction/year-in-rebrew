@@ -1,4 +1,5 @@
 import { BeansGraph } from './elements/beans-graph.mjs'
+import { CoffeeSection } from './elements/coffee-section.mjs'
 import { ComradeFrame } from './elements/comrade-frame.mjs'
 import { CupsGraph } from './elements/cups-graph.mjs'
 import { FunMetric } from './elements/fun-metric.mjs'
@@ -10,6 +11,7 @@ const pageUrl = new URL(location.href)
 
 async function main() {
   BeansGraph.define()
+  CoffeeSection.define()
   ComradeFrame.define()
   CupsGraph.define()
   FunMetric.define()

@@ -148,3 +148,10 @@ table.captains tbody tr:last-child td {
 table.captains td.current {
   background-color: var(--color);
 }
+
+footer {
+  text-align: center;
+  font-style: italic;
+  padding: var(--s4) var(--s0) var(--s3);
+  opacity: 0.8;
+}

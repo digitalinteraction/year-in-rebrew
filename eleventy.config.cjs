@@ -15,6 +15,7 @@ function hash(value) {
 
 const cupsFormat = new Intl.NumberFormat('en-GB', {
   notation: 'standard',
+  maximumFractionDigits: 2,
 })
 const beansFormat = new Intl.NumberFormat('en-GB', {
   maximumSignificantDigits: 3,
