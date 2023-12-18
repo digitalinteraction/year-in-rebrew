@@ -42,7 +42,7 @@ sectionSpace: s0
         </center-layout>
         <details class="hint">
           <summary>info</summary>
-          <p>This is each of your coffees drank and beans bought through the year. They orbit through time from January to December, so you might spot some habits. Cups are arranged vertically so you can see how far through the day each cup is.</p>
+          <p>This is each of your coffees drank and beans bought through the year. They orbit through time from January to December, so you might spot some habits. Cups are arranged through the day vertically so you can see morning or afternoon coffees too.</p>
         </details>
       </cover-layout>
       
@@ -77,7 +77,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>All stats are pretty relative. The cost per cup is based on 1 kg of beans costing £16 then multiplying by your beans bought and dividing that by the number of cups drank. The relative cost is based on an americano costing £{{ config.downstairsCost.toFixed(2) }} downstairs and £{{ config.costaCost.toFixed(2) }} at Costa. </p>
+          <p>All stats are pretty relative. The cost per cup is based on 1 kg of beans costing £16 then multiplying by your beans bought and dividing by the number of cups drank. The relative cost is based on an americano costing {{ config.downstairsCost | formatCost }} at Eat@Urban downstairs and {{ config.costaCost | formatCost }} at Costa. </p>
         </details>
       </cover-layout>
       
@@ -125,7 +125,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>The first bit is the average number of coffees you had on each day of the week. The second is a graph of the total number of cups you had in each hour of the day.</p>
+          <p>This is the average cups of coffees for each day of the week and a graph your cups for each hour of the day.</p>
         </details>
       </cover-layout>
       
@@ -184,7 +184,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>Your comrade is the person you shared the most coffees with, that's someone who had a coffee within 5 minutes of you.</p>
+          <p>Your comrade is the person you shared the most coffees with, which is someone who had a coffee within 5 minutes of you.</p>
         </details>
       </cover-layout>
       {% endif %}
@@ -207,7 +207,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>Your nemesis is the person who you didn't have a coffee with the most, only counting days where you both had a coffee that wasn't within 5 minutes of each other.</p>
+          <p>Your nemesis is the person who you didn't have a coffee with the most, it's based the number of days where you both had a coffee that wasn't within 5 minutes of each other.</p>
         </details>
       </cover-layout>
       {% endif %}
@@ -224,7 +224,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>These people are the most caffeinated for these hours. On average they have the most coffees at these times!</p>
+          <p>Captains are the most caffeinated person in the club at that time slow. On average they have the most coffees at these times!</p>
         </details>
       </cover-layout>
       
