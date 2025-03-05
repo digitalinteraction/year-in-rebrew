@@ -48,7 +48,7 @@ sectionSpace: s0
       
       <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="textStats flow">
-          <p>Hello, brew-tiful! We've made this espresso-ly for you, let's take a look at your coffees throughout 2023.</p>
+          <p>Hello, brew-tiful! We've made this espresso-ly for you, let's take a look at your coffees throughout 2024.</p>
           {% if totalCups === 0 %}
           <p>You didn't drink any coffee this year.</p>
           {% else %}
@@ -70,7 +70,7 @@ sectionSpace: s0
             On average each cup of coffee cost you 
             <span class="coolStat">{{ costPerCup | formatCost }}</span>.
 
-            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost you <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
+            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} times</span> cheaper than downstairs. Those same coffees would have cost you <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
           </p>
           {% endif %}
 

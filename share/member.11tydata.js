@@ -18,7 +18,7 @@ function getDaysSince(input, reference) {
 
 function findPeers(member) {
   const activeDays = new Map()
-  const startOfYear = new Date('2023-01-01')
+  const startOfYear = new Date('2024-01-01')
   for (const record of member.cups) {
     const key = getDaysSince(new Date(record.createdAt), startOfYear)
     activeDays.set(key, (activeDays.get(key) ?? []).concat([record]))

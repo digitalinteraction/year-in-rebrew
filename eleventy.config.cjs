@@ -27,7 +27,7 @@ const costFormat = new Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 })
 
-const daysIn2023 = [, 52, 52, 52, 52, 52]
+const daysIn2024 = [, 53, 53, 52, 52, 52]
 
 function formatCups(cups) {
   return cupsFormat.format(cups) + (cups === 1 ? ' cup' : ' cups')
@@ -42,7 +42,7 @@ function dailyAverage(records, dayOfWeek) {
   const sum = records
     .filter((r) => new Date(r.createdAt).getDay() === dayOfWeek)
     .reduce((sum, r) => sum + r.quantity, 0)
-  return sum / daysIn2023[dayOfWeek]
+  return sum / daysIn2024[dayOfWeek]
 }
 function demember(value, key) {
   const result = []

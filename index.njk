@@ -42,7 +42,7 @@ sectionSpace: s0
       <cover-layout centered="section" space="{{ sectionSpace }}" minHeight="{{ sectionHeight }}">
         <section class="textStats flow">
           <p>
-            This website is a reflection for members of Open Lab's Coffee Club in 2023.
+            This website is a reflection for members of Open Lab's Coffee Club in 2024.
           </p>
           <p>
             We drank <span class="coolStat">{{ totalCups | formatCups }}</span> of coffee,
@@ -57,7 +57,7 @@ sectionSpace: s0
             On average each cup of coffee cost 
             <span class="coolStat">{{ costPerCup | formatCost }}</span>.
 
-            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} ×</span> cheaper than downstairs. Those same coffees would have cost <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
+            That's <span class="coolStat">{{ (config.downstairsCost / costPerCup).toFixed(0) }} times</span> cheaper than downstairs. Those same coffees would have cost <span class="coolStat">{{ (totalCups * config.costaCost) | formatCost }}</span> at Costa!
           </p>
         </section>
       </cover-layout>

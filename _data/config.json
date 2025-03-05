@@ -1,10 +1,10 @@
 {
-  "pricePerKilogram": 16,
+  "pricePerKilogram": 20,
   "beansPerKilogram": 8400,
   "beanLength": 0.0090617,
   "cupVolume": 0.25,
   "downstairsCost": 2.1,
-  "costaCost": 3.2,
+  "costaCost": 3.8,
   "headshotRemaps": {
     "dave-kirk": "david-kirk",
     "jan-smeddinck": "jan-smeddick",
@@ -12,6 +12,12 @@
     "jolly-robinson": null,
     "jerry-zidong-lin": null,
     "intelligent-hammerla": null,
-    "elegant-brattain": null
+    "elegant-brattain": null,
+    "eager-wu": null,
+    "focused-tesla": null,
+    "gifted-goldwasser": null,
+    "zealous-heyrovsky": null,
+    "quirky-elgamal": null,
+    "quirky-sanderson": null
   }
 }

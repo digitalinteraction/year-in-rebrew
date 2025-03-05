@@ -4,8 +4,8 @@ import { watchColorScheme } from '../lib/dark-mode.mjs'
 const WIDTH = 640
 const HEIGHT = 300
 
-const startOfYear = new Date('2023-01-01')
-const endOfYear = new Date('2024-01-01')
+const startOfYear = new Date('2024-01-01')
+const endOfYear = new Date('2025-01-01')
 const msPerDay = 24 * 60 * 60 * 1_000
 
 const CUPS_DURATION = 4_000

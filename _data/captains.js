@@ -1,28 +1,5 @@
 const beancounter = require('./beancounter.json')
 
-// const ranges = [
-//   {
-//     start: new Date('2023-12-11T07:00:00'),
-//     end: new Date('2023-12-11T19:00:00'),
-//   },
-//   {
-//     start: new Date('2023-12-12T07:00:00'),
-//     end: new Date('2023-12-12T19:00:00'),
-//   },
-//   {
-//     start: new Date('2023-12-13T07:00:00'),
-//     end: new Date('2023-12-13T19:00:00'),
-//   },
-//   {
-//     start: new Date('2023-12-14T07:00:00'),
-//     end: new Date('2023-12-14T19:00:00'),
-//   },
-//   {
-//     start: new Date('2023-12-15T07:00:00'),
-//     end: new Date('2023-12-15T19:00:00'),
-//   },
-// ]
-
 /** @param {Date} date */
 function getKey(date, bucketMins) {
   const minutes =
@@ -97,7 +74,8 @@ module.exports = function () {
   }
   console.log('perMember', captains)
 
-  // return Object.fromEntries(captains)
+  // NOTE: the year doesn't matter here, its just used as a base to work out
+  // days of week and do the slots
 
   const dayBase = new Date('2023-12-11T00:00:00')
 
