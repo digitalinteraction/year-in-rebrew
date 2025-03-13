@@ -135,7 +135,7 @@ function increment(map, key, value = 1) {
   map.set(key, current + value)
 }
 
-const GOODIE_THRESHOLD = 5 * 60 * 1_000
+const GOODIE_THRESHOLD = 10 * 60 * 1_000
 const BADDIE_THRESHOLD = 2 * 60 * 60 * 1_000
 
 /**

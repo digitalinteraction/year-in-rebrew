@@ -184,7 +184,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>Your comrade is the person you shared the most coffees with, which is someone who had a coffee within 5 minutes of you.</p>
+          <p>Your comrade is the person you shared the most coffees with, which is someone who had a coffee within 10 minutes of you.</p>
         </details>
       </cover-layout>
       {% endif %}
@@ -207,7 +207,7 @@ sectionSpace: s0
         </section>
         <details class="hint">
           <summary>info</summary>
-          <p>Your nemesis is the person who you didn't have a coffee with the most, it's based the number of days where you both had a coffee that wasn't within 5 minutes of each other.</p>
+          <p>Your nemesis is the person who you didn't have a coffee with the most, it's based the number of days where you both had a coffee that wasn't within 10 minutes of each other.</p>
         </details>
       </cover-layout>
       {% endif %}
@@ -242,6 +242,12 @@ sectionSpace: s0
             to see stats for the whole club.
           </p>
           <p>Keep it grounded and java nice day.</p>
+          {% if site.lastYearShare %}
+          <br>
+          <p class="pullOut">
+            Compare to <a href="{{ site.lastYearShare | template(member.username | hash) }}">last year's rebrew?</a> (if you had one)
+          </p>
+          {% endif %}
         </section>
       </cover-layout>
 

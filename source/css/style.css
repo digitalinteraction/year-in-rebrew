@@ -170,3 +170,11 @@ footer {
 footer a {
   font-weight: bold;
 }
+
+.pullOut {
+  border-left: var(--s-3) solid currentColor;
+  padding: var(--s-3) var(--s-1);
+  font-weight: 600;
+  font-size: 1.05em;
+  opacity: 0.9;
+}

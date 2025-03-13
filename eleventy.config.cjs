@@ -65,6 +65,13 @@ function unslug(input) {
     .map((word) => word.slice(0, 1).toLocaleUpperCase() + word.slice(1))
     .join(' ')
 }
+function template(input, ...values) {
+  let output = input
+  for (let i = 0; i < values.length; i++) {
+    output = input.replace('$' + (i + 1), values[i])
+  }
+  return output
+}
 
 /** @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
 module.exports = function (eleventyConfig) {
@@ -95,6 +102,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('demember', demember)
   eleventyConfig.addFilter('activeMembers', activeMembers)
   eleventyConfig.addFilter('unslug', unslug)
+  eleventyConfig.addFilter('template', template)
 
   eleventyConfig.on('eleventy.after', () => {
     const file = fs.createWriteStream('members.csv')
