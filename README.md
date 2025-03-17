@@ -7,3 +7,6 @@ Pages are generated with a unique hash for each user so it is up to members to s
 **notes**
 
 - Can alembic be done with Webc components?
+- Sharp doesn't like hub SVGs ~ https://github.com/lovell/sharp/issues/1996
+  for 2024, I built the site and manually swapped the broken headshots before
+  building the docker container
